@@ -1,0 +1,6 @@
+{
+  "name": "EcoLens",
+  "description": "Calculate, track, and reduce your carbon footprint with simple actions, goal setting, habit streaks, gamification, and rule-based insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
