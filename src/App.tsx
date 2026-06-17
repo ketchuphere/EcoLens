@@ -71,7 +71,13 @@ export default function App() {
     usedPublicTransport: false,
     savedElectricity: false,
     recycledWaste: false,
-    avoidedFoodWaste: false
+    avoidedFoodWaste: false,
+    usedBottleOrCup: false,
+    atePlantBased: false,
+    unpluggedVampireLoads: false,
+    washedColdWater: false,
+    compostedScraps: false,
+    bikedOrWalked: false
   });
 
   // 1. Initial State Hydrator Lifecycle
@@ -219,6 +225,30 @@ export default function App() {
       list.push('quiz_wizard');
     }
 
+    // Badge G: Water Guardian
+    if (!list.includes('water_guardian')) {
+      const waterCommit = currentHabits.compostedScraps || currentHabits.washedColdWater || currentHabits.avoidedFoodWaste;
+      if (waterCommit) list.push('water_guardian');
+    }
+
+    // Badge H: Plant Pioneer
+    if (!list.includes('plant_pioneer')) {
+      const plantCommit = currentHabits.atePlantBased || currentRecords.some(r => r.inputs.dietType === 'vegan' || r.inputs.dietType === 'vegetarian');
+      if (plantCommit) list.push('plant_pioneer');
+    }
+
+    // Badge I: Circular Champion
+    if (!list.includes('circular_champion')) {
+      const circCommit = currentHabits.usedBottleOrCup || currentHabits.unpluggedVampireLoads;
+      if (circCommit) list.push('circular_champion');
+    }
+
+    // Badge J: Super Emissions Saver
+    if (!list.includes('super_emissions_saver')) {
+      const superSaverCommit = points >= 180 || currentRecords.some(r => r.total <= 250);
+      if (superSaverCommit) list.push('super_emissions_saver');
+    }
+
     // Clean duplicate badge assignments
     const uniqList = Array.from(new Set(list));
     if (uniqList.length !== badgesEarned.length) {
@@ -322,10 +352,13 @@ export default function App() {
       [habitKey]: nextVal
     }));
 
+    const isHighReward = habitKey === 'usedPublicTransport' || habitKey === 'bikedOrWalked';
+    const pointIncrement = isHighReward ? 20 : 10;
+
     if (nextVal) {
-      setPoints(prev => prev + (habitKey === 'usedPublicTransport' ? 20 : 10));
+      setPoints(prev => prev + pointIncrement);
     } else {
-      setPoints(prev => Math.max(0, prev - (habitKey === 'usedPublicTransport' ? 20 : 10)));
+      setPoints(prev => Math.max(0, prev - pointIncrement));
     }
 
     // check badges for daily toggles
@@ -402,7 +435,78 @@ export default function App() {
       usedPublicTransport: false,
       savedElectricity: false,
       recycledWaste: false,
-      avoidedFoodWaste: false
+      avoidedFoodWaste: false,
+      usedBottleOrCup: false,
+      atePlantBased: false,
+      unpluggedVampireLoads: false,
+      washedColdWater: false,
+      compostedScraps: false,
+      bikedOrWalked: false
+    });
+    setActiveTab('dashboard');
+  };
+
+  const handleSetAllParametersToZero = () => {
+    const zeroInputs: CarbonInputs = {
+      vehicleType: 'none',
+      distanceCar: 0,
+      distanceBus: 0,
+      distanceMetro: 0,
+      distanceTrain: 0,
+      flightsCount: 0,
+      distanceFlight: 0,
+      electricityKwh: 0,
+      lpgKg: 0,
+      acHours: 0,
+      hasSolar: false,
+      solarGenerationKwh: 0,
+      dietType: 'vegan',
+      meatMealsPerMonth: 0,
+      foodWasteLevel: 'low',
+      shoppingLevel: 'light',
+      recyclesActive: true,
+      wasteBagsCount: 0
+    };
+
+    const stats = calculateCarbon(zeroInputs);
+    const dateFormatted = new Date().toLocaleDateString('en-US', { month: 'long' });
+
+    const zeroRecord: FootprintRecord = {
+      id: Math.random().toString(36).substring(2, 9),
+      date: dateFormatted,
+      isDaily: false,
+      transport: stats.transport,
+      energy: stats.energy,
+      food: stats.food,
+      lifestyle: stats.lifestyle,
+      total: stats.total,
+      inputs: zeroInputs
+    };
+
+    setRecords([zeroRecord]);
+    setStreak(0);
+    setPoints(0);
+    setBadgesEarned([]);
+    setCompletedChallengeDays([]);
+    setFamilyMembers([]);
+    setGoal({
+      active: true,
+      targetReductionPercent: 0,
+      baselineEmissions: 0,
+      targetEmissions: 0
+    });
+    setCurrentHabits({
+      date: getTodayDateString(),
+      usedPublicTransport: false,
+      savedElectricity: false,
+      recycledWaste: false,
+      avoidedFoodWaste: false,
+      usedBottleOrCup: false,
+      atePlantBased: false,
+      unpluggedVampireLoads: false,
+      washedColdWater: false,
+      compostedScraps: false,
+      bikedOrWalked: false
     });
     setActiveTab('dashboard');
   };
@@ -694,6 +798,7 @@ export default function App() {
               allBadges={BADGES}
               onClearData={handleClearAllLocalData}
               onLoadDemoData={handleLoadDemoData}
+              onSetAllParametersToZero={handleSetAllParametersToZero}
             />
           )}
 

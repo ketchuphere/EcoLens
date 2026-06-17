@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FootprintRecord, FamilyMember } from '../types';
 import { calculateCarbon, getRecommendations } from '../utils/calculator';
-import { Award, ShieldAlert, Sparkles, AlertCircle, Play, CheckCircle2, ChevronRight, BarChart2 } from 'lucide-react';
+import { Award, ShieldAlert, Sparkles, AlertCircle, Play, CheckCircle2, ChevronRight, BarChart2, RefreshCw } from 'lucide-react';
 
 interface AdminAnalyticsProps {
   records: FootprintRecord[];
@@ -10,6 +10,7 @@ interface AdminAnalyticsProps {
   allBadges: Array<{ id: string; title: string; description: string; iconName: string; unlockedLabel: string }>;
   onClearData: () => void;
   onLoadDemoData: () => void;
+  onSetAllParametersToZero?: () => void;
 }
 
 interface TestResult {
@@ -25,7 +26,8 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
   badgesEarned,
   allBadges,
   onClearData,
-  onLoadDemoData
+  onLoadDemoData,
+  onSetAllParametersToZero
 }) => {
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [isRunningTests, setIsRunningTests] = useState(false);
@@ -358,6 +360,22 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
                 </div>
                 <p className="text-[10px] text-stone-500 mt-1 leading-normal">Fills local storages with historic calculation records for June, May, and April, plus 290 points and unlocks specific badges.</p>
               </button>
+
+              {onSetAllParametersToZero && (
+                <button
+                  onClick={onSetAllParametersToZero}
+                  className="w-full text-left py-3 px-4 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50/80 transition-all cursor-pointer group shadow-xs"
+                >
+                  <div className="flex justify-between items-center text-xs font-bold text-rose-800">
+                    <span className="flex items-center gap-1.5">
+                      <RefreshCw className="w-4 h-4 text-rose-600" />
+                      <span>Set All Parameters to Zero</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-rose-400 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <p className="text-[10px] text-rose-700 mt-1 leading-normal">Sets carbon calculator mileage, electric bills, utilities, flights, diet types, and garbage bags to absolute zero parameters instantly.</p>
+                </button>
+              )}
 
               <button
                 onClick={onClearData}

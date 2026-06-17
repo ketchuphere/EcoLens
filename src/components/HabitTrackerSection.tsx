@@ -24,8 +24,14 @@ export const HabitTrackerSection: React.FC<HabitTrackerSectionProps> = ({
   const habitsList = [
     {
       key: 'usedPublicTransport' as const,
-      title: 'Swapped single car travel for Rail / Bus / Bike',
-      description: 'Used public transport, micro-mobility, electric train, or self-powered walking for commutes.',
+      title: 'Swapped single car travel for Transit',
+      description: 'Used public transport, micro-mobility, electric trains, or carpools for commutes.',
+      points: 20
+    },
+    {
+      key: 'bikedOrWalked' as const,
+      title: 'Self-powered mobility (Walked / Biked)',
+      description: 'Chose active transportation, walking, biking, or running for local trips to zero out vehicular carbon.',
       points: 20
     },
     {
@@ -35,15 +41,45 @@ export const HabitTrackerSection: React.FC<HabitTrackerSectionProps> = ({
       points: 10
     },
     {
+      key: 'unpluggedVampireLoads' as const,
+      title: 'Unplugged vampire & phantom loads',
+      description: 'Unplugged phone chargers, microwave clocks, or sleeping laptops to eliminate idle power draw.',
+      points: 10
+    },
+    {
       key: 'recycledWaste' as const,
-      title: 'Sorted cardboard, metal, glass, and compost',
-      description: 'Deliberately cleaned and organized household recyclables or separated food scraps.',
+      title: 'Sorted cardboard, metal, glass, and paper',
+      description: 'Deliberately cleaned and organized household recyclables to support the circular economy.',
+      points: 10
+    },
+    {
+      key: 'compostedScraps' as const,
+      title: 'Composted kitchen scrap organic waste',
+      description: 'Diverted organic fruit and vegetable peels to household or community backyard compost systems.',
       points: 10
     },
     {
       key: 'avoidedFoodWaste' as const,
       title: 'Prevented food scraps & spoilage discards',
       description: 'Prepared meals meticulously from the pantry, stored leftovers, leaving zero organic decay bags.',
+      points: 10
+    },
+    {
+      key: 'usedBottleOrCup' as const,
+      title: 'Brought reusable water bottle / coffee cup',
+      description: 'Refused single-use PET bottles, plastic straws, or paper cups to halt production line extraction.',
+      points: 10
+    },
+    {
+      key: 'atePlantBased' as const,
+      title: 'Chose entirely plant-based meals today',
+      description: 'Opted for beans, nuts, plant-forward veggies, kelp, or whole grains, completely avoiding livestock products.',
+      points: 10
+    },
+    {
+      key: 'washedColdWater' as const,
+      title: 'Washed laundry clothes in cold water',
+      description: 'Skipped waterheating electricity cycles to reduce household energy draw by up to 90% per laundry cycle.',
       points: 10
     }
   ];

@@ -44,6 +44,12 @@ export interface DailyHabits {
   savedElectricity: boolean;
   recycledWaste: boolean;
   avoidedFoodWaste: boolean;
+  usedBottleOrCup: boolean;
+  atePlantBased: boolean;
+  unpluggedVampireLoads: boolean;
+  washedColdWater: boolean;
+  compostedScraps: boolean;
+  bikedOrWalked: boolean;
 }
 
 export interface UserGoal {

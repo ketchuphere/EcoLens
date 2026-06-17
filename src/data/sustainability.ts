@@ -54,6 +54,23 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    id: 'renewable_storage',
+    title: 'Smart Grids, Home Batteries, & Peaker Mitigation',
+    category: 'energy',
+    icon: 'Sun',
+    summary: 'Learn how decentralized home battery banks, vehicle-to-grid tech, and peak shaving shield grids from polluting fossil fuel peaker plants.',
+    content: [
+      'While solar panels capture clean photons, generation curves rarely align with peak energy demands, which surge between 5 PM and 9 PM. During these tight intervals, grids turn to carbon-heavy peaker plants to prevent blackouts.',
+      'Implementing residential battery storage (such as lithium-iron-phosphate packs) enables homeowners to store excess afternoon clean power and utilize it at night.',
+      'This paradigm shift—known as peak demand shaving—lowers baseline grid volatility, avoids costly transmission expansions, and transforms standard households from passive energy consumers into active clean grid stabilization units.'
+    ],
+    tips: [
+      'Program heavier thermal appliances (dishwashers, heat pump cycles) to trigger during midday peak solar generation.',
+      'Investigate if your local utility offers peer-to-peer virtual power plant (VPP) credits for grid discharging.',
+      'Upgrade your home panel with dynamic load managers that automatically shed background loads during extreme demand cycles.'
+    ]
+  },
+  {
     id: 'recycling_secrets',
     title: 'The Circular Economy & Intelligent Recycling',
     category: 'recycling',
@@ -71,6 +88,23 @@ export const ARTICLES: Article[] = [
     ]
   },
   {
+    id: 'ewaste_circularity',
+    title: 'Electronic Waste & The Rare Earth Dilemma',
+    category: 'recycling',
+    icon: 'RefreshCw',
+    summary: 'Explore the compounding impact of discarded circuitry, lithium cell extraction, and methods to safely recover tech minerals.',
+    content: [
+      'Electronic waste is growing three times faster than other domestic waste streams. Circuits are packed with valuable gold, copper, and critical rare-earth metals whose core mining processes damage virgin ecosystems.',
+      'When thrown into standard garbage bins, lead, cadmium, and mercury chemicals leak from circuit boards and batteries, contaminating local aquifers and natural food chains.',
+      'Closing the electronics loop requires robust take-back designs, recycling batteries at dedicated thermal depots, and practicing "Right to Repair" principles to extend device lifecycles before recycling.'
+    ],
+    tips: [
+      'Never dump discarded smartphones, rechargeable batteries, or cable cords in standard trash bins.',
+      'Utilize manufacturer trade-in recycle portals or regional hazardous hardware deposit depots.',
+      'Seek refurbished models when buying replacement hardware to lessen upstream mining demands.'
+    ]
+  },
+  {
     id: 'sustainable_food',
     title: 'Plant Forward: Transforming Your Carbon Plate',
     category: 'food',
@@ -85,6 +119,23 @@ export const ARTICLES: Article[] = [
       'Dedicate at least two days a week to completely organic, plant-based vegan nutrition.',
       'Map your grocery buy to seasonal, nearby harvests to limit long-distance cooling logistics.',
       'Track pantry items deliberately to prevent food spoilage, which silently accounts for roughly 8% of global emissions.'
+    ]
+  },
+  {
+    id: 'aquatic_blue_carbon',
+    title: 'Marine Blue Carbon & Regenerative Aquatic Food',
+    category: 'food',
+    icon: 'Apple',
+    summary: 'How shifting protein sourcing from livestock to low-trophic shellfish and sea kelp heals our biological carbon sinks.',
+    content: [
+      'Our oceans absorb about 25% of all anthropogenic CO2 emissions, yet intensive industrial commercial fishing and bottom-trawling release huge carbon deposits trapped in deep seabed sediments.',
+      'Moving toward a plant-forward or bivalve-centric diet—such as kelp, seaweeds, local mussels, and wild oysters—provides stellar nutritional profiles with active ecosystem advantages.',
+      'These zero-input aquaculture organisms filter regional waterways, require no synthetic fertilizers, and play a pivotal role in bio-carbon storage by sinking active carbons long-term.'
+    ],
+    tips: [
+      'Incorporate edible kelp, spirulina, and sustainably-farmed sea vegetables into meal rotations.',
+      'Choose low-trophic shellfish (mussels, oysters, clams) which act as active net-carbon filter feeds.',
+      'Check marine conservation certificates on seafood packages to ensure bottom-trawling methods were avoided.'
     ]
   },
   {
@@ -151,6 +202,202 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     ],
     correctAnswer: 0,
     expertExplanation: 'Electric trains rely on electric grids which are increasingly powered by sustainable energy sources, making rail the cleanest travel choice alongside active mobility.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q5',
+    category: 'energy',
+    question: 'What is meant by the "embodied carbon" of a consumer product (like a smartphone or laptop)?',
+    options: [
+      'The thermal carbon released when a product is incinerated.',
+      'The amount of pure carbon contained within the physical chemical alloys.',
+      'The sum of all greenhouse gas emissions generated during resource mining, manufacturing, assembly, and ocean transportation.',
+      'The static state electricity a product absorbs while sleeping in the retail store box.'
+    ],
+    correctAnswer: 2,
+    expertExplanation: 'Embodied carbon captures the entire lifecycle emission total of products before they are turned on for the first time. For gadgets, up to 80% of their lifecycle footprint occurs during initial resource mining and assembly processes.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q6',
+    category: 'recycling',
+    question: 'Which material can be recycled indefinitely without experiencing any loss in its structural quality, purity, or strength?',
+    options: [
+      'Oily cardboard and pizza boxes',
+      'High-density polyethylene (HDPE) milk cartons',
+      'Elemental Aluminum and standard Glass container vessels',
+      'Bleached white office paper pulp sheets'
+    ],
+    correctAnswer: 2,
+    expertExplanation: 'Metals like Aluminum and silicate Glass keep their pristine atomic properties when melted down during reprocessing cycles, saving vast upstream energy outputs indefinitely. Paper and plastics undergo active polymer degradation and can only be downcycled a few times.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q7',
+    category: 'food',
+    question: 'Which potent greenhouse gas is emitted on a large scale during flooded rice cultivation due to anaerobic soil conditions?',
+    options: [
+      'Sulfur Hexafluoride (SF6)',
+      'Biogenic Methane (CH4)',
+      'Sub-surface Ozone (O3)',
+      'Chlorofluorocarbon particles (CFC)'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Continually flooded rice paddies create an oxygen-depleted sub-surface soil habitat where archaea organisms generate biogenic methane. Shaking up drainage habits like "Alternate Wetting and Drying" (AWD) cuts methane outputs by 50%.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q8',
+    category: 'transport',
+    question: 'What is the physical mechanical benefit of keeping highway speed around 90-100 km/h (55-60 mph) rather than 120-130 km/h (75-80 mph)?',
+    options: [
+      'It allows mechanical cooling systems to dump heat through active exhaust fans.',
+      'It prevents raw motor oil from thinning during combustion phases.',
+      'It respects aerodynamic drag ratios—slashing fuel consumption and tailpipe outputs by up to 20%.',
+      'It keeps the tires at optimized temperatures to absorb low-altitude atmospheric carbons.'
+    ],
+    correctAnswer: 2,
+    expertExplanation: 'Aerodynamic resistance increases exponentially with speed. Slowing down slightly lowers regional drag forces, maximizing standard motor fuel yields and cutting heavy exhaust rates.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q9',
+    category: 'circular economy',
+    question: 'What is the core principle of a "Circular Economy" compared to the traditional "Linear Economy"?',
+    options: [
+      'Using products once and placing them in deep trash bins to isolate them.',
+      'Designing out waste and pollution, keeping products and materials in high-value use, and regenerating natural systems.',
+      'Transferring physical manufacturing plants to alternative geographic locations.',
+      'Converting all consumer physical paper booklets into clean digital tablets.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'While linear workflows rely on a "take-make-waste" model, circular design aims to eliminate waste from the start by designing products for durability, reuse, disassembly, and premium composting.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q10',
+    category: 'water',
+    question: 'Approximately what percentage of the Earth\'s water is freshwater and easily accessible for human use?',
+    options: [
+      'About 30% of total ocean water.',
+      'Slightly less than 1%.',
+      'Exactly 10%.',
+      'Almost 75% due to deep melting glaciers.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'About 97% of Earth\'s water is saltwater, and of the remaining 3% freshwater, most is trapped in glaciers or deep underground aquifers. Accessible surface freshwater accounts for less than 1%, rendering deep conservation essential.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q11',
+    category: 'biodiversity',
+    question: 'How does maintaining rich plant and species biodiversity directly support planetary climate resilience?',
+    options: [
+      'Wild species absorb noise pollution from regional highways.',
+      'Diverse ecosystems create complex feedback loops that regulate temperatures, filter rivers, pollinate crops, and store more secure carbon than monocultures.',
+      'Animals actively clear landfill waste via consumption.',
+      'Biodiversity has no direct relation to carbon or climate indexes.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Biodiverse ecosystems (like diverse wetlands and old-growth forests) are far more resilient to pests, droughts, and environmental stress. Their complex, layered biomass operates as a highly stable, long-term carbon sink.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q12',
+    category: 'circular economy',
+    question: 'What is "Planned Obsolescence" and how does it impact natural resource extraction rates?',
+    options: [
+      'The scheduled upgrade of regional public transit schedules.',
+      'The intentional design of products to have a limited useful life, forcing consumers to purchase replacements frequently.',
+      'Selecting recycled raw materials before beginning physical assembly.',
+      'The automatic cooling of high-temperature servers during off-peak night hours.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Planned obsolescence results in excessive electronic waste and escalates resource mining for metals like cobalt, lithium, and rare-earth materials. Fighting this involves choosing modular, upgradeable devices and supporting Right to Repair.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q13',
+    category: 'water',
+    question: 'Which day-to-day household habit consumes the most "virtual" or "indirect" freshwater, far exceeding physical tap water use?',
+    options: [
+      'Leaving the sink running while brushing teeth.',
+      'Taking short 5-minute warm showers.',
+      'The food we consume, particularly livestock products requiring thousands of liters of intensive feed irrigation.',
+      'Running the kitchen dishwasher twice a day.'
+    ],
+    correctAnswer: 2,
+    expertExplanation: 'Virtual water represents the hidden water used to produce crops and livestock. Producing a single beef loin requires massive amounts of irrigated crop feed, making our diet choices our single largest virtual water driver.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q14',
+    category: 'biodiversity',
+    question: 'What is a "Keystone Species" and what happens to its native ecosystem if it is lost?',
+    options: [
+      'Any common species with a high localized population count.',
+      'A species that has a disproportionately large effect on its natural environment, whose removal can cause an entire ecosystem structure to collapse.',
+      'A migratory bird species that nests strictly on artificial building ledges.',
+      'Exotic plants cultivated exclusively in commercial glass greenhouses.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Keystone species—such as sea otters regulating sea urchins or wolves structuring riverbank flora—hold the food web together. Their disappearance triggers a destructive trophic cascade, eroding overall biodiversity and carbon-offset potential.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q15',
+    category: 'circular economy',
+    question: 'What is the primary difference between "Recycling" and "Upcycling"?',
+    options: [
+      'Recycling is performed at home, while upcycling requires professional industrial incinerators.',
+      'Recycling breaks a material back down to its raw state for reprocessing, while Upcycling refashions an intact item into a higher-value product.',
+      'Upcycling is only applicable to clothing, while recycling handles aluminum cans.',
+      'Upcycling is highly carbon-intensive, and recycling is carbon-neutral.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Upcycling avoids the massive energy expenditure and carbon footprint needed to melt down, grind, or chemically alter raw materials—it relies on creative design to extend life-extension.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q16',
+    category: 'water',
+    question: 'How does planting native grass and local shrubs (Xeriscaping) instead of exotic lawns conserve regional freshwater?',
+    options: [
+      'Native plants extract moisture from passing cloud banks.',
+      'Native species are pre-adapted to regional rainfall cycles, requiring little to no supplemental watering or synthetic chemical treatments.',
+      'Grass lawns actively evaporate groundwater into the atmosphere.',
+      'Local shrubs physically absorb water from heavy regional sewage grids.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Unlike non-native grasses that depend on daily irrigation, native plants possess deep root networks adapted to local soils and rainfall climates, completely eliminating the need for clean drinking water for landscaping.',
+    pointsAwarded: 25
+  },
+  {
+    id: 'q17',
+    category: 'biodiversity',
+    question: 'How do healthy coastal Mangrove wetlands protect coastlines and capture carbon compared to tropical rainforests on land?',
+    options: [
+      'They reflect ambient sunlight using glossy leaf coatings.',
+      'Their interlocking waterlogged roots store carbon up to 4x faster per acre than land-based tropical forests while buffering coastlines from storms.',
+      'They convert incoming ocean salt directly into soil carbon.',
+      'Mangroves consume invasive seaweed varieties that otherwise outgas methane.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'Mangroves are exceptional "blue carbon" reservoirs. Because their root ecosystems sit in wet, oxygen-poor soils, decomposed organic carbon is sealed underwater for thousands of years instead of decomposing.',
+    pointsAwarded: 30
+  },
+  {
+    id: 'q18',
+    category: 'circular economy',
+    question: 'Which practice is a key element of the "Sharing Economy" that lowers overall material carbon footprints?',
+    options: [
+      'Giving away single-use fast-fashion items to peers after one event.',
+      'Using regional tool libraries, public bike sharing, and coworking rentals to lower total hardware production cycles.',
+      'Ordering individual home-delivered takeaway meals with disposable cutlery.',
+      'Purchasing duplicate gadgets to ensure backup hardware is always secure.'
+    ],
+    correctAnswer: 1,
+    expertExplanation: 'The sharing economy shifts focus from ownership to access. Sharing heavy tools, vehicle fleets, and workspaces maximizes the usage efficiency of manufactured assets, radically cutting down the raw resources needed for duplicate production lines.',
     pointsAwarded: 25
   }
 ];
@@ -256,5 +503,33 @@ export const BADGES: Badge[] = [
     description: 'Registered multi-member family emissions and calculated aggregate saving steps.',
     iconName: 'Users',
     unlockedLabel: 'Community Green Leader'
+  },
+  {
+    id: 'water_guardian',
+    title: 'Water Guardian',
+    description: 'Committed to water conservation, eco laundry, and checking organic composting habits.',
+    iconName: 'Droplet',
+    unlockedLabel: 'Aquatic Hydrology Steward'
+  },
+  {
+    id: 'plant_pioneer',
+    title: 'Plant Pioneer',
+    description: 'Avoided heavy meat-based carbon meals by checking plant-forward daily habits.',
+    iconName: 'Apple',
+    unlockedLabel: 'Vegetation Path Finder'
+  },
+  {
+    id: 'circular_champion',
+    title: 'Circular Champion',
+    description: 'Refused single-use plastic cups and terminated standby phantom electric vamp loads.',
+    iconName: 'RefreshCw',
+    unlockedLabel: 'Zero-Waste Guild Master'
+  },
+  {
+    id: 'super_emissions_saver',
+    title: 'Emissions Saver',
+    description: 'Reduced monthly carbon footprint below 250 kg or accumulated 180+ environment points.',
+    iconName: 'Sparkles',
+    unlockedLabel: 'Atmospheric Restorer'
   }
 ];

@@ -119,8 +119,13 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
   const target = goal.targetEmissions || 380;
   const range = original - target;
   
+  // A profile is unconfigured if there are no records, if the latest record is 0 kg, or if baseline emissions are set to 0.
+  const isUnconfigured = !latestRecord || latestRecord.total === 0 || goal.baselineEmissions === 0;
+
   let progressPercent = 0;
-  if (original > 0 && range > 0) {
+  if (isUnconfigured) {
+    progressPercent = 0;
+  } else if (original > 0 && range > 0) {
     if (currentVal <= target) {
       progressPercent = 100;
     } else if (currentVal >= original) {
@@ -129,7 +134,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
       progressPercent = Math.round(((original - currentVal) / range) * 100);
     }
   } else {
-    progressPercent = 72; // fallback default
+    progressPercent = 0;
   }
 
   return (
@@ -220,15 +225,15 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
               <span>Reduction Goal</span>
             </h2>
             <p className="text-emerald-100 text-xs opacity-90 leading-normal">
-              Baseline: {original.toFixed(0)}kg • Target: {target.toFixed(0)}kg
+              {isUnconfigured ? "No carbon parameters configured yet." : `Baseline: ${original.toFixed(0)}kg • Target: ${target.toFixed(0)}kg`}
             </p>
           </div>
 
           <div className="my-4">
             <div className="flex justify-between items-end mb-1">
               <span className="text-3xl font-black tracking-tight">{progressPercent}%</span>
-              <span className="text-[10px] uppercase font-mono tracking-wider font-extrabold text-emerald-300">
-                {progressPercent >= 100 ? 'Achieved!' : 'On Track'}
+              <span className={`text-[10px] uppercase font-mono tracking-wider font-extrabold ${isUnconfigured ? 'text-amber-300 animate-pulse' : 'text-emerald-300'}`}>
+                {isUnconfigured ? 'Unconfigured' : progressPercent >= 100 ? 'Achieved!' : 'On Track'}
               </span>
             </div>
             <div className="h-3 w-full bg-white/20 rounded-full overflow-hidden p-0.5">
@@ -237,26 +242,37 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
           </div>
 
           <div className="space-y-3">
-            <div className="flex text-[10px] items-center gap-1 justify-center bg-white/10 py-1.5 px-3 rounded-xl border border-white/10">
-              <span>Goal tier:</span>
-              <span className="font-bold text-emerald-100">-{goal.targetReductionPercent}% Reductions</span>
-            </div>
-            
-            <div className="flex gap-1 justify-between">
-              {[10, 20, 30].map(p => (
-                <button
-                  key={p}
-                  onClick={() => onSetGoal(p)}
-                  className={`flex-1 py-1 rounded-lg text-[9px] font-bold border transition-all ${
-                    goal.active && goal.targetReductionPercent === p
-                      ? 'bg-white text-emerald-900 border-white'
-                      : 'bg-emerald-700/50 border-emerald-600/50 text-emerald-100 hover:bg-emerald-700'
-                  }`}
-                >
-                  -{p}%
-                </button>
-              ))}
-            </div>
+            {isUnconfigured ? (
+              <button
+                onClick={() => onNavigateToTab('calculator')}
+                className="w-full text-center bg-white text-emerald-900 hover:bg-emerald-50 font-extrabold text-[11px] py-2 px-3 rounded-xl transition-all shadow-xs cursor-pointer select-none"
+              >
+                Configure Carbon Profile
+              </button>
+            ) : (
+              <>
+                <div className="flex text-[10px] items-center gap-1 justify-center bg-white/10 py-1.5 px-3 rounded-xl border border-white/10">
+                  <span>Goal tier:</span>
+                  <span className="font-bold text-emerald-100">-{goal.targetReductionPercent}% Reductions</span>
+                </div>
+                
+                <div className="flex gap-1 justify-between">
+                  {[10, 20, 30].map(p => (
+                    <button
+                      key={p}
+                      onClick={() => onSetGoal(p)}
+                      className={`flex-1 py-1 rounded-lg text-[9px] font-bold border transition-all ${
+                        goal.active && goal.targetReductionPercent === p
+                          ? 'bg-white text-emerald-900 border-white'
+                          : 'bg-emerald-700/50 border-emerald-600/50 text-emerald-100 hover:bg-emerald-700'
+                      }`}
+                    >
+                      -{p}%
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
 

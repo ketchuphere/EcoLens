@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CarbonInputs } from '../types';
 import { calculateCarbon } from '../utils/calculator';
-import { Bike, Car, Zap, Apple, ShoppingBag, Save, Info, ArrowRight, Eye } from 'lucide-react';
+import { Bike, Car, Zap, Apple, ShoppingBag, Save, Info, ArrowRight, Eye, RefreshCw } from 'lucide-react';
 
 interface CarbonCalculatorFormProps {
   initialInputs?: CarbonInputs;
@@ -38,11 +38,37 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
   const [activeSubTab, setActiveSubTab] = useState<'transport' | 'energy' | 'food' | 'lifestyle'>('transport');
   const [realtimeStats, setRealtimeStats] = useState(() => calculateCarbon(inputs));
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [didZeroOut, setDidZeroOut] = useState(false);
 
   // recalculate on input change
   useEffect(() => {
     setRealtimeStats(calculateCarbon(inputs));
   }, [inputs]);
+
+  const handleZeroInputs = () => {
+    setInputs({
+      vehicleType: 'none',
+      distanceCar: 0,
+      distanceBus: 0,
+      distanceMetro: 0,
+      distanceTrain: 0,
+      flightsCount: 0,
+      distanceFlight: 0,
+      electricityKwh: 0,
+      lpgKg: 0,
+      acHours: 0,
+      hasSolar: false,
+      solarGenerationKwh: 0,
+      dietType: 'vegan',
+      meatMealsPerMonth: 0,
+      foodWasteLevel: 'low',
+      shoppingLevel: 'light',
+      recyclesActive: true,
+      wasteBagsCount: 0
+    });
+    setDidZeroOut(true);
+    setTimeout(() => setDidZeroOut(false), 3000);
+  };
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +90,22 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
         <div>
           <h2 className="text-xl font-bold text-slate-900">Carbon Footprint Calculator</h2>
           <p className="text-xs text-slate-400">Input your travel, home utility, food, and consumption parameters to get an environment audit</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={handleZeroInputs}
+              className="px-3.5 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-150 hover:border-rose-250 text-rose-700 hover:text-rose-800 font-extrabold text-[11px] rounded-xl transition-all flex items-center gap-1.5 cursor-pointer select-none shadow-xs"
+              id="zero_out_parameters_btn"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>Set All Parameters to Zero</span>
+            </button>
+            {didZeroOut && (
+              <span className="text-[10px] text-rose-600 bg-rose-50/50 border border-rose-100/30 px-2 py-1 rounded-lg font-bold animate-pulse">
+                ✓ Extinguished all inputs to absolute 0
+              </span>
+            )}
+          </div>
         </div>
         <div className="bg-slate-50 border border-slate-200 p-4 px-5 rounded-2xl flex items-center gap-4 text-right">
           <div>
