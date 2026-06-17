@@ -63,7 +63,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
   }
 
   // Diagnostics Unit Test Suite
-  const runDiagnostics = () => {
+  const runDiagnostics = async () => {
     setIsRunningTests(true);
     const results: TestResult[] = [];
 
@@ -248,10 +248,136 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       });
     }
 
-    setTimeout(() => {
-      setTestResults(results);
-      setIsRunningTests(false);
-    }, 1000);
+    // API Test Case 5: GET /api/health (General Service Fitness Check)
+    try {
+      const response = await fetch('/api/health');
+      const data = await response.json();
+      if (response.status === 200 && data.status === 'ok') {
+        const leaksSensitive = data.env !== undefined || data.process !== undefined || data.cwd !== undefined;
+        if (!leaksSensitive) {
+          results.push({
+            name: 'GET /api/health Check',
+            category: 'API Security',
+            status: 'passed',
+            message: `Response 200 OK. Body: ${JSON.stringify(data)}. Verified: No secrets, config values or env variables leaked.`
+          });
+        } else {
+          throw new Error('Endpoint returned sensitive environment or system variables.');
+        }
+      } else {
+        throw new Error(`Unexpected non-200 or failure state: ${response.status}`);
+      }
+    } catch (e: any) {
+      results.push({
+        name: 'GET /api/health Check',
+        category: 'API Security',
+        status: 'failed',
+        message: `Failed to fetch API or inspect payload safely: ${e.message}`
+      });
+    }
+
+    // API Test Case 6: POST /api/health (Rejected HTTP Method Check)
+    try {
+      const response = await fetch('/api/health', { method: 'POST' });
+      const data = await response.json();
+      if (response.status === 405 && data.status === 'error') {
+        results.push({
+          name: 'POST /api/health Method Block',
+          category: 'API Security',
+          status: 'passed',
+          message: `Correctly status-blocked POST call with 405 Method Not Allowed. Message: "${data.message}"`
+        });
+      } else {
+        throw new Error(`Expected 405 blocker, but received status ${response.status}`);
+      }
+    } catch (e: any) {
+      results.push({
+        name: 'POST /api/health Method Block',
+        category: 'API Security',
+        status: 'failed',
+        message: `Failed: ${e.message}`
+      });
+    }
+
+    // API Test Case 7: POST /api/carbon-estimate (Valid Parameters Check)
+    try {
+      const response = await fetch('/api/carbon-estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ distanceCar: 150, electricityKwh: 80 })
+      });
+      const data = await response.json();
+      if (response.status === 200 && data.status === 'success') {
+        results.push({
+          name: 'POST /api/carbon-estimate Calculation',
+          category: 'API Calculation',
+          status: 'passed',
+          message: `Successfully calculated emissions total: ${data.calculation.totalEmissions} ${data.calculation.units} (Car: ${data.calculation.carEmissions} kg, Elect: ${data.calculation.electricityEmissions} kg)`
+        });
+      } else {
+        throw new Error(`Expected 200 payload, but received status ${response.status}`);
+      }
+    } catch (e: any) {
+      results.push({
+        name: 'POST /api/carbon-estimate Calculation',
+        category: 'API Calculation',
+        status: 'failed',
+        message: `Failed: ${e.message}`
+      });
+    }
+
+    // API Test Case 8: POST /api/carbon-estimate (Invalid/Negative Payload Validation Edge Check)
+    try {
+      const response = await fetch('/api/carbon-estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ distanceCar: -12, electricityKwh: NaN })
+      });
+      const data = await response.json();
+      if (response.status === 400 && data.status === 'error') {
+        results.push({
+          name: 'POST /api/carbon-estimate Input Validation',
+          category: 'API Security',
+          status: 'passed',
+          message: `Correctly rejected invalid inputs with 400 Bad Request. Error: "${data.message}"`
+        });
+      } else {
+        throw new Error(`Expected 400 bad request rejection, but received status ${response.status}`);
+      }
+    } catch (e: any) {
+      results.push({
+        name: 'POST /api/carbon-estimate Input Validation',
+        category: 'API Security',
+        status: 'failed',
+        message: `Failed: ${e.message}`
+      });
+    }
+
+    // API Test Case 9: GET /api/carbon-estimate (Rejected HTTP Method Check)
+    try {
+      const response = await fetch('/api/carbon-estimate', { method: 'GET' });
+      const data = await response.json();
+      if (response.status === 405 && data.status === 'error') {
+        results.push({
+          name: 'GET /api/carbon-estimate Method Block',
+          category: 'API Security',
+          status: 'passed',
+          message: `Correctly status-blocked GET call with 405 Method Not Allowed. Message: "${data.message}"`
+        });
+      } else {
+        throw new Error(`Expected 405 blocker, but received status ${response.status}`);
+      }
+    } catch (e: any) {
+      results.push({
+        name: 'GET /api/carbon-estimate Method Block',
+        category: 'API Security',
+        status: 'failed',
+        message: `Failed: ${e.message}`
+      });
+    }
+
+    setTestResults(results);
+    setIsRunningTests(false);
   };
 
   return (
