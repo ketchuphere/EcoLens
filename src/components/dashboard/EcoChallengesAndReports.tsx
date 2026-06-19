@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { EcoChallenge, SEVEN_DAY_CHALLENGE } from '../data/sustainability';
-import { FootprintRecord, FamilyMember } from '../types';
-import { generateExecutiveReportText, exportToCSV } from '../utils/reports';
-import { Sparkles, Calendar, CheckSquare, FileText, Download, Printer, ShieldCheck, HeartPulse } from 'lucide-react';
+import { SEVEN_DAY_CHALLENGE } from '../../data/sustainability';
+import { FootprintRecord, FamilyMember } from '../../types';
+import { ReportService } from '../../services/reportService';
+import { Calendar, CheckSquare, FileText, Download, Printer, ShieldCheck } from 'lucide-react';
 
 interface EcoChallengesAndReportsProps {
   records: FootprintRecord[];
@@ -20,7 +20,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
   const [activeReportOpen, setActiveReportOpen] = useState(false);
 
   const handleDownloadCSV = () => {
-    const csvContent = exportToCSV(records);
+    const csvContent = ReportService.exportCSV(records);
     if (!csvContent) return;
     
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -34,7 +34,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
   };
 
   const handleDownloadReportText = () => {
-    const text = generateExecutiveReportText(records, familyMembers);
+    const text = ReportService.generateExecutiveReport(records, familyMembers);
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -49,18 +49,17 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
     window.print();
   };
 
-  const latestRecord = records[0];
-  const auditText = generateExecutiveReportText(records, familyMembers);
+  const auditText = ReportService.generateExecutiveReport(records, familyMembers);
 
   return (
     <div className="space-y-8" id="challenges_reports_container">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 font-sans">
         {/* Left Side: 7-Day Eco Challenge */}
         <div className="lg:col-span-7 bg-white border border-stone-200/85 rounded-2xl p-6 shadow-sm space-y-6">
           <div className="pb-4 border-b border-stone-100 flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold text-stone-900">7-Day Guided Green Challenge</h2>
-              <p className="text-xs text-stone-500 font-medium">Earn point multipliers by declaring standard climate actions on consecutive days</p>
+              <p className="text-xs text-stone-500 font-medium tracking-wide">Earn point multipliers by declaring standard climate actions on consecutive days</p>
             </div>
             <div className="h-10 w-10 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-100 text-amber-500">
               <Calendar className="w-5 h-5" />
@@ -109,7 +108,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
                     <p className={`text-xs font-bold ${checked ? 'text-emerald-900' : 'text-stone-800'}`}>
                       {challenge.title}
                     </p>
-                    <p className="text-[11px] text-stone-500 font-medium leading-normal font-sans">
+                    <p className="text-[11px] text-stone-500 font-medium leading-normal pl-0.5">
                       {challenge.description}
                     </p>
                   </div>
@@ -138,7 +137,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
               </div>
             </div>
 
-            <p className="text-xs text-stone-500 leading-relaxed font-sans">
+            <p className="text-xs text-stone-500 leading-relaxed font-sans pr-1">
               EcoLens aggregates local calculations, streaks, and family totals to generate a structured carbon audit file. Select a file type below to trigger downoad:
             </p>
 
@@ -191,7 +190,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
                   <Printer className="w-4 h-4" />
                   <span>Open Executive Print Report</span>
                 </div>
-                <span className="text-[9px] font-bold text-indigo-400 uppercase font-mono">PRINT-MODE</span>
+                <span className="text-[9px] font-bold text-indigo-400 uppercase font-mono mr-1">PRINT-MODE</span>
               </button>
             </div>
           </div>
@@ -212,11 +211,11 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
       {activeReportOpen && (
         <div className="fixed inset-0 bg-stone-900/60 flex items-center justify-center p-4 z-50 animate-fade-in no-print">
           <div className="bg-white rounded-2xl max-w-2xl w-full border border-stone-200 overflow-hidden flex flex-col max-h-[85vh] shadow-2xl">
-            <div className="bg-stone-905 p-4 border-b border-stone-200 flex justify-between items-center text-stone-900">
+            <div className="bg-stone-905 p-4 border-b border-stone-200 flex justify-between items-center text-stone-900 font-sans">
               <h3 className="font-extrabold text-sm tracking-wide">Executive environmental Audit statement</h3>
               <button
                 onClick={() => setActiveReportOpen(false)}
-                className="text-stone-500 hover:text-stone-900 font-bold px-2 py-1"
+                className="text-stone-500 hover:text-stone-900 font-bold px-2 py-1 cursor-pointer"
               >
                 ✕
               </button>
@@ -226,7 +225,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
               {auditText}
             </div>
 
-            <div className="p-4 bg-white border-t border-stone-100 flex justify-end gap-3 no-print">
+            <div className="p-4 bg-white border-t border-stone-100 flex justify-end gap-3 no-print font-sans">
               <button
                 onClick={handlePrint}
                 className="py-2 px-4 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg flex items-center gap-1.5 cursor-pointer"
@@ -236,7 +235,7 @@ export const EcoChallengesAndReports: React.FC<EcoChallengesAndReportsProps> = (
               </button>
               <button
                 onClick={() => setActiveReportOpen(false)}
-                className="py-2 px-4 text-xs font-bold bg-stone-200 hover:bg-stone-305 text-stone-700 rounded-lg cursor-pointer"
+                className="py-2 px-4 text-xs font-bold bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-lg cursor-pointer"
               >
                 Close Report
               </button>

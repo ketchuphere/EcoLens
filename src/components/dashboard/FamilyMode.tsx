@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FamilyMember } from '../types';
-import { Users, Plus, Trash2, ArrowUpRight, Scale, Info } from 'lucide-react';
+import { FamilyMember } from '../../types';
+import { Users, Plus, Trash2, ArrowUpRight, Info } from 'lucide-react';
 
 interface FamilyModeProps {
   familyMembers: FamilyMember[];
@@ -36,7 +36,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
 
   return (
     <div className="bg-white border border-stone-200/85 rounded-2xl p-6 shadow-sm mr-auto" id="family_mode_container">
-      <div className="pb-4 border-b border-stone-100 mb-6 flex items-center justify-between">
+      <div className="pb-4 border-b border-stone-100 mb-6 flex items-center justify-between font-sans">
         <div>
           <h2 className="text-xl font-bold text-stone-900">Family & Household Group Mode</h2>
           <p className="text-xs text-stone-500 font-medium">Record and aggregate footprint metrics across multiple household members without cloud accounts</p>
@@ -46,7 +46,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 font-sans">
         {/* Form to enter a family member */}
         <div className="lg:col-span-5 bg-stone-50/70 p-5 rounded-xl border border-stone-200/60">
           <h3 className="text-sm font-bold text-stone-800 pb-3 border-b border-stone-200/50 mb-4 flex items-center gap-2">
@@ -75,7 +75,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
                   min="0"
                   value={transport}
                   onChange={(e) => setTransport(e.target.value)}
-                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                 />
               </div>
 
@@ -83,10 +83,10 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
                 <label className="block text-[10px] font-bold text-stone-600">Utilities / Energy (kg)</label>
                 <input
                   type="number"
-                  min="0"
+                   min="0"
                   value={energy}
                   onChange={(e) => setEnergy(e.target.value)}
-                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                 />
               </div>
 
@@ -97,7 +97,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
                   min="0"
                   value={food}
                   onChange={(e) => setFood(e.target.value)}
-                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                 />
               </div>
 
@@ -108,7 +108,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
                   min="0"
                   value={lifestyle}
                   onChange={(e) => setLifestyle(e.target.value)}
-                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                  className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                 />
               </div>
             </div>
@@ -167,12 +167,12 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
                     {member.transport} / {member.energy} / {member.food} / {member.lifestyle}
                   </div>
 
-                  <div className="w-1/6 text-right flex items-center justify-end gap-2">
+                  <div className="w-1/6 text-right flex items-center justify-end gap-2 text-stone-500">
                     <span className="font-bold text-stone-800 number-font">{member.total.toFixed(0)} kg</span>
                     <button
                       type="button"
                       onClick={() => onRemoveFamilyMember(member.id)}
-                      className="text-stone-400 hover:text-rose-600 p-1 rounded hover:bg-rose-50"
+                      className="text-stone-400 hover:text-rose-600 p-1 rounded hover:bg-rose-50 cursor-pointer"
                       title="Decline logging entry"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -183,7 +183,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
 
               {familyMembers.length === 0 && (
                 <div className="py-12 text-center space-y-1.5">
-                  <p className="text-xs font-semibold text-stone-500">No family logs enrolled yet</p>
+                  <p className="text-xs font-semibold text-stone-500 font-sans">No family logs enrolled yet</p>
                   <p className="text-[10px] text-stone-400 max-w-sm mx-auto p-0.5">
                     Input records under the "Add Family Member" form to calculate household aggregates and map offsets with roommates or family members.
                   </p>
@@ -192,7 +192,7 @@ export const FamilyMode: React.FC<FamilyModeProps> = ({
             </div>
           </div>
 
-          <div className="bg-stone-50 border border-stone-200/60 rounded-xl p-3.5 text-[10px] text-stone-500 flex gap-2 leading-relaxed">
+          <div className="bg-stone-50 border border-stone-200/60 rounded-xl p-3.5 text-[10px] text-stone-500 flex gap-2 leading-relaxed font-sans">
             <Info className="w-4.5 h-4.5 text-emerald-600 shrink-0 mt-0.5" />
             <p>
               Your local family lists are entirely insulated and stored directly in your browser. Unlocking active lists triggers the <strong>Family Captain</strong> achievement Badge automatically!

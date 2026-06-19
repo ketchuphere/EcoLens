@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Calendar, Plus, Info, Check, Trash2, Car, Zap, Apple, ShoppingBag, HelpCircle, Eye } from 'lucide-react';
-import { FootprintRecord, CarbonInputs } from '../types';
+import { Calendar, Plus, Info, Trash2, Car, Zap, Apple, ShoppingBag, HelpCircle } from 'lucide-react';
+import { FootprintRecord } from '../../types';
 
 interface ActivityCalendarProps {
   records: FootprintRecord[];
@@ -97,13 +97,13 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
       {/* Decorative top ambient bar */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-emerald-400 via-teal-500 to-amber-400" />
       
-      <div className="pb-5 border-b border-stone-100 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="pb-5 border-b border-stone-100 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-sans">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h2 className="text-xl font-extrabold text-stone-900 tracking-tight">Carbon Intensity Calendar</h2>
             <span className="hidden sm:inline bg-stone-100 text-stone-600 text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">7-Day Tracker</span>
           </div>
-          <p className="text-xs text-stone-500 font-medium font-sans">Inspect daily emissions and add logs to track consistency parameters</p>
+          <p className="text-xs text-stone-500 font-medium">Inspect daily emissions and add logs to track consistency parameters</p>
         </div>
         
         <div className="flex items-center gap-3">
@@ -119,7 +119,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
       </div>
 
       {/* Grid of the 7 Days of the Week */}
-      <div className="grid grid-cols-2 sm:grid-cols-7 gap-3 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-7 gap-3 mb-8 font-sans">
         {daysOfWeek.map((day, idx) => {
           const isSelected = selectedDayOffset === idx;
           const cardInfo = dailyLogsMap[day.dateString];
@@ -129,7 +129,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
               key={day.dateString}
               type="button"
               onClick={() => setSelectedDayOffset(idx)}
-              className={`border rounded-xl p-3 flex flex-col items-center justify-between transition-all select-none gap-2 text-center relative ${cardInfo.color} ${
+              className={`border rounded-xl p-3 flex flex-col items-center justify-between transition-all select-none gap-2 text-center relative cursor-pointer ${cardInfo.color} ${
                 isSelected 
                   ? 'ring-2 ring-emerald-600 ring-offset-2 scale-102 font-semibold shadow-xs' 
                   : 'opacity-90 hover:opacity-100 shadow-3xs'
@@ -139,13 +139,13 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
               <span className="text-2xl font-black tracking-tight number-font leading-none">{day.dayNum}</span>
               <span className="text-[10px] opacity-75 font-semibold text-stone-500">{day.monthName}</span>
               <div className="text-sm mt-1">{cardInfo.indicator}</div>
-              <span className="text-[10px] text-stone-500 block font-sans truncate w-full">{cardInfo.valStr}</span>
+              <span className="text-[10px] text-stone-500 block truncate w-full">{cardInfo.valStr}</span>
             </button>
           );
         })}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start font-sans">
         {/* Day Inspector & Log Panel */}
         <div className="lg:col-span-6 bg-stone-50 p-6 rounded-2xl border border-stone-200/60 space-y-4">
           <div className="flex justify-between items-center pb-2 border-b border-stone-200">
@@ -157,7 +157,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
               <button
                 type="button"
                 onClick={() => onDeleteRecord(currentDayLog.id)}
-                className="text-stone-400 hover:text-rose-600 transition-colors p-1 bg-stone-100 hover:bg-stone-200 rounded-lg"
+                className="text-stone-400 hover:text-rose-600 transition-colors p-1 bg-stone-100 hover:bg-stone-200 rounded-lg cursor-pointer"
                 title="Delete this daily record"
               >
                 <Trash2 className="w-4 h-4" />
@@ -210,7 +210,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                     placeholder="e.g. 5.1"
                     value={customTransport}
                     onChange={(e) => setCustomTransport(e.target.value)}
-                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                     required
                   />
                 </div>
@@ -224,7 +224,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                     placeholder="e.g. 3.0"
                     value={customEnergy}
                     onChange={(e) => setCustomEnergy(e.target.value)}
-                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                     required
                   />
                 </div>
@@ -238,7 +238,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                     placeholder="e.g. 4.0"
                     value={customFood}
                     onChange={(e) => setCustomFood(e.target.value)}
-                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                     required
                   />
                 </div>
@@ -252,7 +252,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                     placeholder="e.g. 2.5"
                     value={customLifestyle}
                     onChange={(e) => setCustomLifestyle(e.target.value)}
-                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium"
+                    className="w-full text-xs border border-stone-200 rounded-lg p-2 bg-white font-medium focus:outline-emerald-600"
                     required
                   />
                 </div>
@@ -267,7 +267,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
               </button>
 
               {successMsg && (
-                <p className="text-[10px] text-center text-emerald-600 font-semibold animate-pulse">
+                <p className="text-[10px] text-center text-emerald-600 font-semibold animate-pulse font-sans">
                   ✓ Daily footprint logged successfully!
                 </p>
               )}
@@ -305,7 +305,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                     onClick={() => setActiveGuideTab(tab.id as any)}
                     className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-[9.5px] font-extrabold transition-all cursor-pointer ${
                       isActive 
-                        ? 'bg-white text-emerald-800 shadow-3xs border border-stone-200/10' 
+                        ? 'bg-white text-emerald-800 shadow-3xs border border-stone-200/10 font-bold' 
                         : 'text-stone-500 hover:text-stone-800 hover:bg-stone-200/30'
                     }`}
                   >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CarbonInputs } from '../types';
-import { calculateCarbon } from '../utils/calculator';
-import { Bike, Car, Zap, Apple, ShoppingBag, Save, Info, ArrowRight, Eye, RefreshCw } from 'lucide-react';
+import { CarbonInputs } from '../../types';
+import { CarbonService } from '../../services/carbonService';
+import { Car, Zap, Apple, ShoppingBag, Save, Info, ArrowRight, RefreshCw } from 'lucide-react';
 
 interface CarbonCalculatorFormProps {
   initialInputs?: CarbonInputs;
@@ -36,13 +36,13 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
   );
 
   const [activeSubTab, setActiveSubTab] = useState<'transport' | 'energy' | 'food' | 'lifestyle'>('transport');
-  const [realtimeStats, setRealtimeStats] = useState(() => calculateCarbon(inputs));
+  const [realtimeStats, setRealtimeStats] = useState(() => CarbonService.calculate(inputs));
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [didZeroOut, setDidZeroOut] = useState(false);
 
   // recalculate on input change
   useEffect(() => {
-    setRealtimeStats(calculateCarbon(inputs));
+    setRealtimeStats(CarbonService.calculate(inputs));
   }, [inputs]);
 
   const handleZeroInputs = () => {
@@ -74,7 +74,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
     e.preventDefault();
     onSave(inputs);
     setSaveSuccess(true);
-    setTimeout(() => setSaveSuccess(false), 4000);
+    setTimeout(() => setSaveSuccess(false), 4500);
   };
 
   const updateInput = <K extends keyof CarbonInputs>(key: K, value: CarbonInputs[K]) => {
@@ -437,6 +437,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
                   value={inputs.wasteBagsCount}
                   onChange={(e) => updateInput('wasteBagsCount', Number(e.target.value))}
                   className="w-full accent-emerald-600 cursor-pointer"
+                  style={{ cursor: 'pointer' }}
                 />
               </div>
 

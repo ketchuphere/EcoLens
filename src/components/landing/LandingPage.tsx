@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 import { 
   Leaf, 
   ArrowRight, 
-  ChevronRight, 
   Menu, 
   X, 
   Globe, 
@@ -262,6 +261,7 @@ export default function LandingPage() {
                 </div>
               </motion.div>
 
+              {/* Interactive bento badges sitting around original globe graphic */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

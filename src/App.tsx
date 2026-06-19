@@ -8,26 +8,25 @@ import {
   FileText, 
   Calendar, 
   Users, 
-  BookOpen, 
-  Award,
+  BookOpen,
   TrendingUp,
   ArrowLeft
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { CarbonInputs, FootprintRecord, DailyHabits, UserGoal, FamilyMember } from './types';
-import { ScoreDashboard } from './components/ScoreDashboard';
-import { CarbonCalculatorForm } from './components/CarbonCalculatorForm';
-import { WhatIfSimulator } from './components/WhatIfSimulator';
-import { HabitTrackerSection } from './components/HabitTrackerSection';
-import { ActivityCalendar } from './components/ActivityCalendar';
-import { FamilyMode } from './components/FamilyMode';
-import { KnowledgeHub } from './components/KnowledgeHub';
-import { AdminAnalytics } from './components/AdminAnalytics';
-import { EcoChallengesAndReports } from './components/EcoChallengesAndReports';
-import LandingPage from './components/LandingPage';
+import { ScoreDashboard } from './components/dashboard/ScoreDashboard';
+import { CarbonCalculatorForm } from './components/calculator/CarbonCalculatorForm';
+import { WhatIfSimulator } from './components/calculator/WhatIfSimulator';
+import { HabitTrackerSection } from './components/dashboard/HabitTrackerSection';
+import { ActivityCalendar } from './components/dashboard/ActivityCalendar';
+import { FamilyMode } from './components/dashboard/FamilyMode';
+import { KnowledgeHub } from './components/dashboard/KnowledgeHub';
+import { AdminAnalytics } from './components/dashboard/AdminAnalytics';
+import { EcoChallengesAndReports } from './components/dashboard/EcoChallengesAndReports';
+import LandingPage from './components/landing/LandingPage';
 
-import { calculateCarbon } from './utils/calculator';
+import { CarbonService } from './services/carbonService';
 import { BADGES } from './data/sustainability';
 
 // Today's YYYY-MM-DD date formatter
@@ -137,7 +136,13 @@ export default function App() {
           usedPublicTransport: false,
           savedElectricity: false,
           recycledWaste: false,
-          avoidedFoodWaste: false
+          avoidedFoodWaste: false,
+          usedBottleOrCup: false,
+          atePlantBased: false,
+          unpluggedVampireLoads: false,
+          washedColdWater: false,
+          compostedScraps: false,
+          bikedOrWalked: false
         });
       }
     }
@@ -259,7 +264,7 @@ export default function App() {
 
   // 4. Input interactions handlers
   const handleSaveMonthlyCalculation = (inputs: CarbonInputs) => {
-    const stats = calculateCarbon(inputs);
+    const stats = CarbonService.calculate(inputs);
     const dateFormatted = new Date().toLocaleDateString('en-US', { month: 'long' }); // e.g. "June"
 
     const newRecord: FootprintRecord = {
@@ -468,7 +473,7 @@ export default function App() {
       wasteBagsCount: 0
     };
 
-    const stats = calculateCarbon(zeroInputs);
+    const stats = CarbonService.calculate(zeroInputs);
     const dateFormatted = new Date().toLocaleDateString('en-US', { month: 'long' });
 
     const zeroRecord: FootprintRecord = {
@@ -552,9 +557,9 @@ export default function App() {
       wasteBagsCount: 4
     };
 
-    const JuneStats = calculateCarbon(JuneInputs);
-    const MayStats = calculateCarbon(MayInputs);
-    const AprilStats = calculateCarbon(AprilInputs);
+    const JuneStats = CarbonService.calculate(JuneInputs);
+    const MayStats = CarbonService.calculate(MayInputs);
+    const AprilStats = CarbonService.calculate(AprilInputs);
 
     const JuneRecord: FootprintRecord = {
       id: 'demo-june',

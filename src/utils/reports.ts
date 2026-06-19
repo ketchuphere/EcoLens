@@ -34,7 +34,7 @@ export function exportToCSV(records: FootprintRecord[]): string {
     'Weekly Waste Bags Count'
   ];
 
-  function escapeCSVField(val: any): string {
+  function escapeCSVField(val: unknown): string {
     if (val === null || val === undefined) return '';
     const str = String(val);
     if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {

@@ -1,15 +1,33 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import { validateEnvironment } from './src/utils/envValidate';
+import { Logger } from './src/utils/logger';
 
 // Load environment variables safely
 dotenv.config();
+
+// Validate critical variables immediately upon process bootstrap
+validateEnvironment();
 
 const app = express();
 const PORT = 3000;
 
 // Middleware for parsing JSON requests safely with a size limit
 app.use(express.json({ limit: '10kb' }));
+
+// Safe JSON Syntax error handler to override defaults and prevent stacks leakage
+app.use((err: unknown, _req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof SyntaxError && 'status' in err && err.status === 400 && 'body' in err) {
+    res.status(400).json({
+      status: 'error',
+      message: 'Unable to process the request owing to malformed input payload configuration.',
+      timestamp: new Date().toISOString()
+    });
+    return;
+  }
+  next();
+});
 
 // Set secure response headers to harden the deployment
 app.use((req, res, next) => {
@@ -36,7 +54,7 @@ const sendError = (res: Response, status: number, message: string) => {
  * Description: Simple service health status check.
  * Excludes sensitive system data such as environment variable names, base paths, database logs, or server systems.
  */
-app.all('/api/health', (req: Request, res: Response, next: NextFunction) => {
+app.all('/api/health', (req: Request, res: Response, _next: NextFunction) => {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return sendError(res, 405, `Method ${req.method} not allowed. Please use GET.`);
@@ -44,12 +62,12 @@ app.all('/api/health', (req: Request, res: Response, next: NextFunction) => {
 
   try {
     res.status(200).json({
-      status: 'ok',
-      service: 'ecolens-sustainability-api',
+      status: 'healthy',
+      service: 'EcoLens',
       uptime: Math.round(process.uptime()),
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
+  } catch {
     sendError(res, 500, 'An internal error occurred while processing health diagnostics check.');
   }
 });
@@ -100,7 +118,7 @@ app.all('/api/carbon-estimate', (req: Request, res: Response) => {
       },
       timestamp: new Date().toISOString()
     });
-  } catch (err) {
+  } catch {
     sendError(res, 400, 'Unable to process the request owing to malformed input payload configuration.');
   }
 });
@@ -122,11 +140,17 @@ const startServer = async () => {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[EcoLens Backend] Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-  });
+  if (process.env.NODE_ENV !== 'test' && !process.env.VITEST) {
+    app.listen(PORT, '0.0.0.0', () => {
+      Logger.info(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    });
+  }
 };
 
-startServer().catch((err) => {
-  console.error('Fatal: Failed to bootstrap full-stack server container', err);
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VITEST) {
+  startServer().catch((err) => {
+    Logger.error('Fatal: Failed to bootstrap full-stack server container', err);
+  });
+}
+
+export default app;

@@ -1,0 +1,1421 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Component Hierarchies Snapshot Integrity Test > safely matches rendering hierarchy configuration for LandingPage 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen bg-[#F8FAF8] text-slate-800 font-sans antialiased overflow-x-hidden"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex items-center justify-between"
+      >
+        <div
+          class="flex items-center gap-2.5 cursor-pointer select-none group"
+          id="nav_brand"
+        >
+          <div
+            class="h-9 w-9 rounded-xl bg-emerald-500 flex items-center justify-center text-emerald-900 font-extrabold shadow-sm transition-transform group-hover:scale-105"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-leaf w-5.5 h-5.5 fill-current text-white"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+              />
+              <path
+                d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"
+              />
+            </svg>
+          </div>
+          <div>
+            <span
+              class="text-xl font-bold tracking-tight text-slate-900 block font-sans"
+            >
+              EcoLens
+            </span>
+            <span
+              class="text-[9px] text-emerald-650 font-black uppercase tracking-widest block leading-none"
+            >
+              Carbon Intelligence
+            </span>
+          </div>
+        </div>
+        <nav
+          class="hidden md:flex items-center gap-8 font-sans font-semibold text-xs text-slate-600"
+        >
+          <button
+            class="hover:text-emerald-700 transition-colors cursor-pointer"
+          >
+            Home
+          </button>
+          <button
+            class="hover:text-emerald-700 transition-colors cursor-pointer"
+          >
+            Features
+          </button>
+          <button
+            class="hover:text-emerald-700 transition-colors cursor-pointer"
+          >
+            How It Works
+          </button>
+          <a
+            class="hover:text-emerald-700 transition-colors cursor-pointer"
+            data-discover="true"
+            href="/app/dashboard"
+          >
+            Dashboard
+          </a>
+          <a
+            class="hover:text-emerald-700 transition-colors cursor-pointer"
+            data-discover="true"
+            href="/app/calculator"
+          >
+            Calculator
+          </a>
+        </nav>
+        <div
+          class="hidden md:flex items-center gap-4"
+        >
+          <a
+            class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs tracking-wide py-2.5 px-5 rounded-full transition-all shadow-sm hover:shadow-emerald-200"
+            data-discover="true"
+            href="/app/calculator"
+          >
+            Start Tracking
+          </a>
+        </div>
+        <button
+          aria-label="Toggle menu"
+          class="md:hidden p-2 text-slate-600 hover:text-slate-900 cursor-pointer"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-menu w-6 h-6"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 5h16"
+            />
+            <path
+              d="M4 12h16"
+            />
+            <path
+              d="M4 19h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <section
+      class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-radial from-emerald-50/50 via-transparent to-transparent"
+      id="hero"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        <div
+          class="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left"
+        >
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200/50 rounded-full text-[10px] font-black tracking-widest text-emerald-800 uppercase animate-pulse"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-emerald-500"
+            />
+            🌱 Introducing EcoLens Carbon Tracker
+          </div>
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] font-sans"
+          >
+            Understand Your 
+            <span
+              class="text-emerald-600 underline decoration-emerald-200 decoration-wavy"
+            >
+              Carbon Footprint
+            </span>
+            . 
+            <br />
+            Take Actions. Protect The Planet.
+          </h1>
+          <p
+            class="text-base sm:text-lg text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-medium"
+          >
+            Track your daily emissions, discover sustainable habits, and reduce your environmental impact with simple actions and diagnostic models.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2"
+          >
+            <a
+              class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm tracking-wide py-4 px-8 rounded-full transition-all shadow-md hover:shadow-emerald-200 flex items-center justify-center gap-2 group"
+              data-discover="true"
+              href="/app/calculator"
+            >
+              <span>
+                Start Tracking
+              </span>
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-arrow-right w-4 h-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12h14"
+                />
+                <path
+                  d="m12 5 7 7-7 7"
+                />
+              </svg>
+            </a>
+            <button
+              class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 font-extrabold text-sm border border-slate-200 py-4 px-8 rounded-full transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+        <div
+          class="lg:col-span-5 flex justify-center items-center"
+        >
+          <div
+            class="relative w-72 h-72 sm:w-96 sm:h-96"
+          >
+            <div
+              class="absolute inset-0 rounded-full border border-dashed border-emerald-300/40 animate-spin"
+              style="animation-duration: 40s;"
+            />
+            <div
+              class="absolute inset-4 rounded-full bg-emerald-100/30 blur-2xl -z-10"
+            />
+            <div
+              class="absolute inset-6 rounded-full bg-white border border-slate-200/50 shadow-md flex items-center justify-center overflow-hidden"
+            >
+              <svg
+                class="w-full h-full p-8 text-emerald-600/80"
+                fill="none"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="85"
+                  stroke="currentColor"
+                  stroke-dasharray="2 3"
+                  stroke-width="0.5"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="55"
+                  stroke="currentColor"
+                  stroke-dasharray="3 3"
+                  stroke-width="0.5"
+                />
+                <path
+                  d="M45,100 C45,65 65,45 100,45 C115,45 130,55 140,70 C145,80 135,90 120,90 C110,90 100,100 100,115 C100,130 85,145 70,145 C55,145 45,130 45,100 Z"
+                  fill="currentColor"
+                  fill-opacity="0.08"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                />
+                <path
+                  d="M110,130 C125,115 145,110 160,120 C170,130 155,150 140,155 C125,160 115,145 110,130 Z"
+                  fill="currentColor"
+                  fill-opacity="0.08"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                />
+                <path
+                  d="M30,100 A70,70 0 0,1 170,100"
+                  stroke="currentColor"
+                  stroke-dasharray="5,5"
+                  stroke-width="1"
+                />
+                <path
+                  d="M170,100 A70,70 0 0,1 30,100"
+                  stroke="currentColor"
+                  stroke-dasharray="5,5"
+                  stroke-width="1"
+                />
+              </svg>
+            </div>
+            <div
+              class="absolute top-2 -right-4 bg-white/90 backdrop-blur-md border border-slate-200/60 p-3 rounded-2xl shadow-md flex items-center gap-3"
+              style="opacity: 0; transform: translateY(20px);"
+            >
+              <div
+                class="h-8 w-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-leaf w-4 h-4 fill-current"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+                  />
+                  <path
+                    d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p
+                  class="text-[10px] font-black text-slate-800 leading-tight uppercase"
+                >
+                  CO₂ Footprint
+                </p>
+                <p
+                  class="text-xs font-bold text-emerald-600 number-font"
+                >
+                  -35% saved
+                </p>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-6 -left-8 bg-white/90 backdrop-blur-md border border-slate-200/60 p-3 rounded-2xl shadow-md flex items-center gap-3"
+              style="opacity: 0; transform: translateY(20px);"
+            >
+              <div
+                class="h-8 w-8 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-500 animate-spin"
+                style="animation-duration: 10s;"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-sun w-4 h-4"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                  />
+                  <path
+                    d="M12 2v2"
+                  />
+                  <path
+                    d="M12 20v2"
+                  />
+                  <path
+                    d="m4.93 4.93 1.41 1.41"
+                  />
+                  <path
+                    d="m17.66 17.66 1.41 1.41"
+                  />
+                  <path
+                    d="M2 12h2"
+                  />
+                  <path
+                    d="M20 12h2"
+                  />
+                  <path
+                    d="m6.34 17.66-1.41 1.41"
+                  />
+                  <path
+                    d="m19.07 4.93-1.41 1.41"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p
+                  class="text-[10px] font-black text-slate-800 leading-tight uppercase"
+                >
+                  Clean Energy
+                </p>
+                <p
+                  class="text-xs font-bold text-amber-600 number-font"
+                >
+                  1.5kW Grid
+                </p>
+              </div>
+            </div>
+            <div
+              class="absolute top-1/2 -translate-y-1/2 -left-12 bg-white/90 backdrop-blur-md border border-slate-200/60 p-2 text-center rounded-3xl shadow-md flex flex-col justify-center items-center gap-1"
+              style="opacity: 0; transform: translateY(20px);"
+            >
+              <div
+                class="h-10 w-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-extrabold text-[10px] shadow-inner"
+              >
+                20%
+              </div>
+              <span
+                class="text-[7px] font-black uppercase text-slate-400"
+              >
+                Target
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 md:py-28 bg-white border-y border-slate-200/40"
+      id="problem"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6"
+      >
+        <div
+          class="text-center max-w-xl mx-auto space-y-4 mb-16"
+        >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900"
+          >
+            Why Carbon Tracking Matters?
+          </h2>
+          <p
+            class="text-sm text-slate-400 font-medium font-sans"
+          >
+            Human-caused emissions are driving climate change. Uncovering your footprint elements is the essential first tier towards net-zero recovery.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          <div
+            class="bg-slate-50 hover:bg-slate-100/50 border border-slate-200/70 p-6 rounded-[24px] transition-all group flex flex-col justify-between hover:translate-y-[-2px] duration-300"
+          >
+            <div
+              class="space-y-4"
+            >
+              <div
+                class="h-12 w-12 rounded-2xl bg-teal-50 border border-teal-100 text-teal-600 flex items-center justify-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-globe w-5.5 h-4.5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                  />
+                  <path
+                    d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                  />
+                  <path
+                    d="M2 12h20"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="font-extrabold text-base text-slate-900 tracking-tight"
+              >
+                Rising Emissions
+              </h3>
+              <p
+                class="text-xs text-slate-500 font-medium leading-relaxed font-sans"
+              >
+                The atmosphere is filling with carbon dioxide faster than forests can absorb, driving extreme patterns worldwide.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-slate-50 hover:bg-slate-100/50 border border-slate-200/70 p-6 rounded-[24px] transition-all group flex flex-col justify-between hover:translate-y-[-2px] duration-300"
+          >
+            <div
+              class="space-y-4"
+            >
+              <div
+                class="h-12 w-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center animate-pulse"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-car w-5.5 h-4.5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
+                  />
+                  <circle
+                    cx="7"
+                    cy="17"
+                    r="2"
+                  />
+                  <path
+                    d="M9 17h6"
+                  />
+                  <circle
+                    cx="17"
+                    cy="17"
+                    r="2"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="font-extrabold text-base text-slate-900 tracking-tight"
+              >
+                Transportation
+              </h3>
+              <p
+                class="text-xs text-slate-500 font-medium leading-relaxed font-sans"
+              >
+                Average single vehicles and short aviation flights contribute massive pollutants per mile traveled.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-slate-50 hover:bg-slate-100/50 border border-slate-200/70 p-6 rounded-[24px] transition-all group flex flex-col justify-between hover:translate-y-[-2px] duration-300"
+          >
+            <div
+              class="space-y-4"
+            >
+              <div
+                class="h-12 w-12 rounded-2xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-sun w-5.5 h-5.5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                  />
+                  <path
+                    d="M12 2v2"
+                  />
+                  <path
+                    d="M12 20v2"
+                  />
+                  <path
+                    d="m4.93 4.93 1.41 1.41"
+                  />
+                  <path
+                    d="m17.66 17.66 1.41 1.41"
+                  />
+                  <path
+                    d="M2 12h2"
+                  />
+                  <path
+                    d="M20 12h2"
+                  />
+                  <path
+                    d="m6.34 17.66-1.41 1.41"
+                  />
+                  <path
+                    d="m19.07 4.93-1.41 1.41"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="font-extrabold text-base text-slate-900 tracking-tight"
+              >
+                Energy Usage
+              </h3>
+              <p
+                class="text-xs text-slate-500 font-medium leading-relaxed font-sans"
+              >
+                Heating, ventilation, and appliances rely heavily on coal or oil grids, raising baseline housing footprint indexes.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-slate-50 hover:bg-slate-100/50 border border-slate-200/70 p-6 rounded-[24px] transition-all group flex flex-col justify-between hover:translate-y-[-2px] duration-300"
+          >
+            <div
+              class="space-y-4"
+            >
+              <div
+                class="h-12 w-12 rounded-2xl bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-refresh-cw w-5 h-5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"
+                  />
+                  <path
+                    d="M21 3v5h-5"
+                  />
+                  <path
+                    d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"
+                  />
+                  <path
+                    d="M8 16H3v5"
+                  />
+                </svg>
+              </div>
+              <h3
+                class="font-extrabold text-base text-slate-900 tracking-tight"
+              >
+                Lifestyle Choices
+              </h3>
+              <p
+                class="text-xs text-slate-500 font-medium leading-relaxed font-sans"
+              >
+                Food production, shopping habits, and food landfill waste accumulate rapidly. Minor changes prompt immense relief.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 md:py-28 bg-[#F8FAF8]"
+      id="how-it-works"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6"
+      >
+        <div
+          class="text-center max-w-xl mx-auto space-y-4 mb-20"
+        >
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full text-[9px] font-black tracking-widest text-emerald-800 uppercase"
+          >
+            How EcoLens Works
+          </div>
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900"
+          >
+            Simple 3-Step Process
+          </h2>
+          <p
+            class="text-sm text-slate-400 font-medium font-sans"
+          >
+            No accounts. Pure dashboard simplicity. Learn how to diagnose and act.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative"
+        >
+          <div
+            class="bg-white border border-slate-200/60 p-8 rounded-[32px] space-y-4 relative shadow-xs"
+          >
+            <div
+              class="absolute -top-6 right-8 h-12 w-12 rounded-2xl bg-emerald-600 font-black text-white flex items-center justify-center number-font text-lg shadow"
+            >
+              01
+            </div>
+            <h3
+              class="text-lg font-black text-slate-900"
+            >
+              Calculate
+            </h3>
+            <p
+              class="text-xs text-slate-450 leading-relaxed font-medium font-sans"
+            >
+              Enter your monthly activities: car travel, flights count, electricity bills, and meal patterns through our rule-based forms.
+            </p>
+            <div
+              class="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase tracking-wider"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-check w-3.5 h-3.5 text-emerald-600"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6 9 17l-5-5"
+                />
+              </svg>
+              <span>
+                100% Secure & Client-Side
+              </span>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-slate-200/60 p-8 rounded-[32px] space-y-4 relative shadow-xs"
+          >
+            <div
+              class="absolute -top-6 right-8 h-12 w-12 rounded-2xl bg-emerald-600 font-black text-white flex items-center justify-center number-font text-lg shadow"
+            >
+              02
+            </div>
+            <h3
+              class="text-lg font-black text-slate-900"
+            >
+              Understand
+            </h3>
+            <p
+              class="text-xs text-slate-450 leading-relaxed font-medium font-sans"
+            >
+              Review detailed data analytics. See how your transport, home utilities, food, and shopping split compare to planetary baselines.
+            </p>
+            <div
+              class="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase tracking-wider"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-check w-3.5 h-3.5 text-emerald-600"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6 9 17l-5-5"
+                />
+              </svg>
+              <span>
+                Dynamic Charts Included
+              </span>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-slate-200/60 p-8 rounded-[32px] space-y-4 relative shadow-xs"
+          >
+            <div
+              class="absolute -top-6 right-8 h-12 w-12 rounded-2xl bg-emerald-600 font-black text-white flex items-center justify-center number-font text-lg shadow"
+            >
+              03
+            </div>
+            <h3
+              class="text-lg font-black text-slate-900"
+            >
+              Reduce
+            </h3>
+            <p
+              class="text-xs text-slate-450 leading-relaxed font-medium font-sans"
+            >
+              Engage what-if scenarios. Toggle rooftop solar installs, try eco challenges, log habits checklist items and secure badge honors.
+            </p>
+            <div
+              class="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase tracking-wider"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-check w-3.5 h-3.5 text-emerald-600"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6 9 17l-5-5"
+                />
+              </svg>
+              <span>
+                Earn Eco Badges & Points
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 md:py-28 bg-white border-t border-slate-200/30"
+      id="features"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6"
+      >
+        <div
+          class="text-center max-w-xl mx-auto space-y-4 mb-16"
+        >
+          <h2
+            class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900"
+          >
+            Interactive Tools Overview
+          </h2>
+          <p
+            class="text-sm text-slate-400 font-medium font-sans"
+          >
+            Explore the core modules crafted to assist your ecological journey.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-car w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
+                />
+                <circle
+                  cx="7"
+                  cy="17"
+                  r="2"
+                />
+                <path
+                  d="M9 17h6"
+                />
+                <circle
+                  cx="17"
+                  cy="17"
+                  r="2"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              Carbon Calculator
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Comprehensive rule-based checklist to evaluate monthly car travel, cooking LPG, home AC hours, and shopping volumes with live footprint calculations.
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-indigo-50 text-indigo-650 flex items-center justify-center border border-indigo-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-layout-dashboard w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  height="9"
+                  rx="1"
+                  width="7"
+                  x="3"
+                  y="3"
+                />
+                <rect
+                  height="5"
+                  rx="1"
+                  width="7"
+                  x="14"
+                  y="3"
+                />
+                <rect
+                  height="9"
+                  rx="1"
+                  width="7"
+                  x="14"
+                  y="12"
+                />
+                <rect
+                  height="5"
+                  rx="1"
+                  width="7"
+                  x="3"
+                  y="16"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              Personal Dashboard
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Review dynamic pie distributions, comparative goal baselines, historical logs trends and streak tracking parameters in a highly polished interface.
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-sparkles w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+                />
+                <path
+                  d="M20 2v4"
+                />
+                <path
+                  d="M22 4h-4"
+                />
+                <circle
+                  cx="4"
+                  cy="20"
+                  r="2"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              What-If Reduction Simulator
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Toggle residential solar setups, slash weekly car commutes, shift diets veg tiers, and preview immediate planetary offset metrics visually.
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-rose-50 text-rose-650 flex items-center justify-center border border-rose-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-square-check-big w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"
+                />
+                <path
+                  d="m9 11 3 3L22 4"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              Eco Habits Checklist
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Commit to micro habits such as waste composting or boarding public transit. Accumulate environment points to unlock authoritative profile badge awards.
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center border border-teal-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-file-text w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                />
+                <path
+                  d="M14 2v4a2 2 0 0 0 2 2h4"
+                />
+                <path
+                  d="M10 9H8"
+                />
+                <path
+                  d="M16 13H8"
+                />
+                <path
+                  d="M16 17H8"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              Diagnostic reports
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Audit carbon distributions, compare households with sibling or roommate groups, explore educational circular economies and resolve sustainability quizzes.
+            </p>
+          </div>
+          <div
+            class="bg-slate-50 border border-slate-200/60 p-6 rounded-[28px] hover:shadow-xs hover:border-slate-300 transition-all duration-300"
+          >
+            <div
+              class="h-10 w-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-150 mb-5 shadow-xs"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-award w-5 h-5"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"
+                />
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="6"
+                />
+              </svg>
+            </div>
+            <h3
+              class="font-extrabold text-base text-slate-900 mb-2 font-sans"
+            >
+              Gamified Milestones
+            </h3>
+            <p
+              class="text-[11px] text-slate-500 font-medium leading-relaxed font-sans"
+            >
+              Keep daily log streaks alive, gather welcome reward quotas, complete local challenges lists and secure a suite of verified honor medals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 md:py-28 bg-[#094037] text-white relative"
+      id="impact"
+    >
+      <div
+        class="absolute inset-0 bg-radial from-emerald-800/10 to-transparent pointer-events-none"
+      />
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        <div
+          class="lg:col-span-6 space-y-6"
+        >
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/10 rounded-full text-[9px] font-black tracking-widest text-emerald-300 uppercase"
+          >
+            Planetary Metrics
+          </div>
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.25]"
+          >
+            Every single habit change 
+            <br />
+            has massive global sway
+          </h2>
+          <p
+            class="text-xs sm:text-sm text-emerald-200/70 font-medium leading-relaxed font-sans"
+          >
+            Decarbonization is not an abstract governmental duty. When single households implement smart energy adjustments or audit local transit miles, emission indexes collapse immediately.
+          </p>
+          <div
+            class="pt-4 flex flex-col sm:flex-row gap-6"
+          >
+            <div
+              class="flex gap-3 items-start"
+            >
+              <div
+                class="h-8 w-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-300 shrink-0"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-shield-check w-4.5 h-4.5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                  />
+                  <path
+                    d="m9 12 2 2 4-4"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4
+                  class="text-xs font-bold font-sans"
+                >
+                  Rule-Based Diagnostic
+                </h4>
+                <p
+                  class="text-[10px] text-emerald-205/60 mt-0.5 leading-normal font-sans"
+                >
+                  Matches peer-reviewed carbon factors directly.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex gap-3 items-start"
+            >
+              <div
+                class="h-8 w-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-300 shrink-0"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-smartphone w-4.5 h-4.5"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="20"
+                    rx="2"
+                    ry="2"
+                    width="14"
+                    x="5"
+                    y="2"
+                  />
+                  <path
+                    d="M12 18h.01"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4
+                  class="text-xs font-bold font-sans"
+                >
+                  Offline-First Design
+                </h4>
+                <p
+                  class="text-[10px] text-emerald-205/60 mt-0.5 leading-normal font-sans"
+                >
+                  Zero personal telemetry ever exits your browser.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6"
+        >
+          <div
+            class="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-3 relative overflow-hidden backdrop-blur-xs"
+          >
+            <div
+              class="text-emerald-400 font-extrabold text-[10px] tracking-wider uppercase font-sans"
+            >
+              Transportation Yield
+            </div>
+            <div
+              class="text-4xl font-black text-white leading-none number-font"
+            >
+              10 kg
+            </div>
+            <p
+              class="text-xs text-white/90 font-black tracking-tight leading-tight uppercase relative"
+            >
+              CO₂ Emissions Saved
+            </p>
+            <div
+              class="h-px bg-white/10 my-2"
+            />
+            <p
+              class="text-[10px] text-emerald-200/60 leading-normal font-sans"
+            >
+              Equals walking instead of taking standard gasoline vehicles for typical short trips.
+            </p>
+          </div>
+          <div
+            class="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-3 relative overflow-hidden backdrop-blur-xs"
+          >
+            <div
+              class="text-emerald-400 font-extrabold text-[10px] tracking-wider uppercase font-sans"
+            >
+              Target Reductions
+            </div>
+            <div
+              class="text-4xl font-black text-white leading-none number-font"
+            >
+              20%
+            </div>
+            <p
+              class="text-xs text-white/90 font-black tracking-tight leading-tight uppercase relative"
+            >
+              Target Reduction Index
+            </p>
+            <div
+              class="h-px bg-white/10 my-2"
+            />
+            <p
+              class="text-[10px] text-emerald-200/60 leading-normal font-sans"
+            >
+              Standard yearly reduction goal required to successfully match global climate accord parameters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="py-20 bg-slate-50 border-b border-slate-200/40"
+    >
+      <div
+        class="max-w-4xl mx-auto px-6 text-center space-y-6"
+      >
+        <div
+          class="h-10 w-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-lg font-black font-sans"
+        >
+          “
+        </div>
+        <blockquote
+          class="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-800 tracking-tight leading-relaxed max-w-2xl mx-auto font-sans"
+        >
+          "The future depends on what we do today."
+        </blockquote>
+        <cite
+          class="block text-[11px] font-black uppercase text-slate-400 tracking-widest font-sans font-medium"
+        >
+          — Mahatma Gandhi
+        </cite>
+      </div>
+    </section>
+    <section
+      class="py-24 bg-white relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-radial from-emerald-50/20 via-transparent to-transparent pointer-events-none"
+      />
+      <div
+        class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10"
+      >
+        <div
+          class="h-12 w-12 rounded-3xl bg-emerald-500 flex items-center justify-center text-white mx-auto shadow-md shadow-emerald-500/10 animate-bounce"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-zap w-5.5 h-5.5 fill-current text-white"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
+            />
+          </svg>
+        </div>
+        <div
+          class="space-y-3"
+        >
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight"
+          >
+            Ready to start your sustainability journey?
+          </h2>
+          <p
+            class="text-sm text-slate-500 font-bold max-w-lg mx-auto"
+          >
+            Measure your footprint today. Discover custom insights immediately. Zero friction.
+          </p>
+        </div>
+        <div
+          class="flex flex-col sm:flex-row justify-center items-center gap-4"
+        >
+          <a
+            class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm tracking-wide py-4 px-8 rounded-full transition-all shadow-md hover:shadow-emerald-200 inline-block text-center"
+            data-discover="true"
+            href="/app/calculator"
+          >
+            Calculate My Footprint
+          </a>
+          <a
+            class="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 font-extrabold text-sm tracking-wide py-4 px-8 rounded-full transition-all inline-block text-center"
+            data-discover="true"
+            href="/app/dashboard"
+          >
+            Visit Dashboard
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-slate-50 border-t border-slate-200/50 py-12 text-center text-[11px] text-slate-400"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 space-y-4"
+      >
+        <p
+          class="font-extrabold text-slate-600 uppercase tracking-wide"
+        >
+          EcoLens © 2026
+        </p>
+        <p
+          class="font-medium max-w-md mx-auto leading-normal"
+        >
+          A rule-based mathematical simulator. Environment indexes mapped from typical European and Global environmental protection agency averages.
+        </p>
+        <div
+          class="pt-2 flex justify-center gap-6 font-bold text-slate-500"
+        >
+          <button
+            class="hover:text-slate-800 cursor-pointer"
+          >
+            Home
+          </button>
+          <button
+            class="hover:text-slate-800 cursor-pointer"
+          >
+            Features
+          </button>
+          <button
+            class="hover:text-slate-800 cursor-pointer"
+          >
+            How It Works
+          </button>
+          <a
+            class="hover:text-slate-800"
+            data-discover="true"
+            href="/app/dashboard"
+          >
+            Dashboard
+          </a>
+          <a
+            class="hover:text-slate-800"
+            data-discover="true"
+            href="/app/calculator"
+          >
+            Calculator
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

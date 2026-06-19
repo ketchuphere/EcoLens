@@ -1,0 +1,39 @@
+name: CI - EcoLens Quality Pipeline
+
+on:
+  push:
+    branches: [ main, master, development ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  quality-check:
+    name: Full Pipeline Runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository source
+        uses: actions/checkout@v4
+
+      - name: Configure Node.js deployment runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 1. Install dependencies
+        run: npm ci
+
+      - name: 2. Run ESLint Code Quality Checks
+        run: npm run lint
+
+      - name: 3. Run TypeScript Type Validation Checks
+        run: npm run type-check
+
+      - name: 4. Run Core Tests Suite
+        run: npm run test -- --run
+
+      - name: 5. Generate Coverage Reports
+        run: npm run test:coverage -- --run
+
+      - name: 6. Run Production Build Bundle compilation
+        run: npm run build

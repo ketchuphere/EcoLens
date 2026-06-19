@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FootprintRecord, FamilyMember } from '../types';
-import { calculateCarbon, getRecommendations } from '../utils/calculator';
-import { Award, ShieldAlert, Sparkles, AlertCircle, Play, CheckCircle2, ChevronRight, BarChart2, RefreshCw } from 'lucide-react';
+import { FootprintRecord, FamilyMember } from '../../types';
+import { CarbonService } from '../../services/carbonService';
+import { ShieldAlert, Sparkles, AlertCircle, Play, CheckCircle2, ChevronRight, BarChart2, RefreshCw } from 'lucide-react';
 
 interface AdminAnalyticsProps {
   records: FootprintRecord[];
@@ -22,9 +22,9 @@ interface TestResult {
 
 export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
   records,
-  familyMembers,
-  badgesEarned,
-  allBadges,
+  familyMembers: _familyMembers,
+  badgesEarned: _badgesEarned,
+  allBadges: _allBadges,
   onClearData,
   onLoadDemoData,
   onSetAllParametersToZero
@@ -90,7 +90,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
         wasteBagsCount: 3
       };
       
-      const res = calculateCarbon(standardInputs);
+      const res = CarbonService.calculate(standardInputs);
       if (res.total > 0 && res.sustainabilityScore > 0) {
         results.push({
           name: 'Calculator Standard Inputs',
@@ -133,7 +133,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
         wasteBagsCount: 0
       };
 
-      const res = calculateCarbon(zeroInputs);
+      const res = CarbonService.calculate(zeroInputs);
       // Vegan/renewable offsets should yield extremely low total or offset cleanly
       if (res.total >= 0) {
         results.push({
@@ -177,7 +177,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
         wasteBagsCount: 20
       };
 
-      const res = calculateCarbon(excessiveInputs);
+      const res = CarbonService.calculate(excessiveInputs);
       // Eco rating clamp: score should not plunge below minimum floor
       if (res.sustainabilityScore >= 5 && res.sustainabilityScore <= 100) {
         results.push({
@@ -222,7 +222,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       };
 
       const calculated_total = { transport: 400, energy: 300, food: 200, lifestyle: 100 };
-      const recommendations = getRecommendations(testInputs, calculated_total);
+      const recommendations = CarbonService.getRecommendations(testInputs, calculated_total);
       
       // Look for expected recommendation ids based on rules
       const hasCarRec = recommendations.some(r => r.id === 'car_transit');
@@ -383,7 +383,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
   return (
     <div className="space-y-8 animate-fade-in text-stone-800" id="admin_analytics_container">
       {/* Metrics Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-sans">
         <div className="bg-white border border-stone-200/85 rounded-2xl p-5 shadow-sm">
           <p className="text-xs text-stone-500 font-semibold uppercase tracking-wider">Historical Logs</p>
           <p className="text-3xl font-extrabold text-stone-900 number-font mt-1">{totalCalculations}</p>
@@ -402,15 +402,15 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
             <ShieldAlert className="w-4 h-4 shrink-0 text-rose-500" />
             <span>{topCategoryName}</span>
           </p>
-          <span className="text-[10px] text-stone-400 text-stone-500 font-medium">Largest carbon category aggregate</span>
+          <span className="text-[10px] text-stone-400 font-medium">Largest carbon category aggregate</span>
         </div>
       </div>
 
       {/* Grid: Diagnostics and Database operations */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 font-sans">
         {/* Left Spot: Dynamic Local diagnostics */}
         <div className="lg:col-span-7 bg-white border border-stone-200/85 rounded-2xl p-6 shadow-sm space-y-6">
-          <div className="pb-4 border-b border-stone-100 flex items-center justify-between">
+          <div className="pb-4 border-b border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-bold text-stone-900">Developer Testing Diagnostics Suite</h3>
               <p className="text-xs text-stone-400 font-medium">Execute client-authoritative checks to validate formulas, boundary limits and engine rules.</p>
@@ -458,7 +458,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
               <div className="py-8 text-center text-stone-400 text-xs space-y-1.5 border-2 border-dashed border-stone-200 rounded-xl">
                 <BarChart2 className="w-9 h-9 text-stone-300 mx-auto" />
                 <p className="font-semibold">Diagnostic test deck idle</p>
-                <p className="text-[10px] text-stone-400 max-w-sm mx-auto">Click "Run Diagnostics" above to test carbon equations and recomendation logic dynamically.</p>
+                <p className="text-[10px] text-stone-400 max-w-sm mx-auto font-sans">Click "Run Diagnostics" above to test carbon equations and recomendation logic dynamically.</p>
               </div>
             )}
           </div>
@@ -484,7 +484,7 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
                   </span>
                   <ChevronRight className="w-4 h-4 text-stone-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <p className="text-[10px] text-stone-500 mt-1 leading-normal">Fills local storages with historic calculation records for June, May, and April, plus 290 points and unlocks specific badges.</p>
+                <p className="text-[10px] text-stone-500 mt-1 leading-normal font-sans">Fills local storages with historic calculation records for June, May, and April, plus 290 points and unlocks specific badges.</p>
               </button>
 
               {onSetAllParametersToZero && (
@@ -494,12 +494,12 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
                 >
                   <div className="flex justify-between items-center text-xs font-bold text-rose-800">
                     <span className="flex items-center gap-1.5">
-                      <RefreshCw className="w-4 h-4 text-rose-600" />
+                      <RefreshCw className="w-4 h-4 text-rose-600 animate-spin-slow" />
                       <span>Set All Parameters to Zero</span>
                     </span>
                     <ChevronRight className="w-4 h-4 text-rose-400 group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <p className="text-[10px] text-rose-700 mt-1 leading-normal">Sets carbon calculator mileage, electric bills, utilities, flights, diet types, and garbage bags to absolute zero parameters instantly.</p>
+                  <p className="text-[10px] text-rose-700 mt-1 leading-normal font-sans">Sets carbon calculator mileage, electric bills, utilities, flights, diet types, and garbage bags to absolute zero parameters instantly.</p>
                 </button>
               )}
 
@@ -511,12 +511,12 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
                   <span>Purge Local Storage variables</span>
                   <ChevronRight className="w-4 h-4 text-rose-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <p className="text-[10px] text-rose-600 mt-1 leading-normal">Wipes all cached calculations, checklist habits, earned levels, points, and family names. Reset to blank state.</p>
+                <p className="text-[10px] text-rose-600 mt-1 leading-normal font-sans">Wipes all cached calculations, checklist habits, earned levels, points, and family names. Reset to blank state.</p>
               </button>
             </div>
           </div>
 
-          <div className="border-t border-stone-150 pt-4 text-[10px] text-stone-400 font-medium leading-normal">
+          <div className="border-t border-stone-150 pt-4 text-[10px] text-stone-400 font-medium leading-normal font-sans">
             <p>
               EcoLens operates purely in client-side persistence mode (`localStorage`). No files or personal databases are synced outside this workspace container, protecting privacy.
             </p>

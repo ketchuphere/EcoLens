@@ -1,7 +1,8 @@
 import React from 'react';
-import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, AreaChart, Area } from 'recharts';
-import { FootprintRecord, UserGoal } from '../types';
-import { ArrowDown, Flame, Award, Target, HelpCircle, TrendingDown, Leaf, ShieldAlert } from 'lucide-react';
+import { ResponsiveContainer, AreaChart, Area, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { FootprintRecord, UserGoal } from '../../types';
+import { CarbonService } from '../../services/carbonService';
+import { Target, Award, Leaf, ShieldAlert } from 'lucide-react';
 
 interface ScoreDashboardProps {
   records: FootprintRecord[];
@@ -26,25 +27,21 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
 }) => {
   const latestRecord = records[0];
 
-  // Calculate current score
-  const score = latestRecord ? latestRecord.total : 0;
+  // Calculate current score via centralized CarbonService
   const sustainabilityScore = latestRecord
-    ? Math.max(5, Math.min(100, Math.round(100 - (score / 12))))
+    ? CarbonService.calculate(latestRecord.inputs).sustainabilityScore
     : 70; // fallback standard score
 
   // Determine levels
   let level = "Green Beginner";
   let nextLevelPoints = 100;
-  let levelColor = "text-emerald-600 bg-emerald-50 border-emerald-200";
   
   if (points >= 250) {
     level = "Planet Protector";
     nextLevelPoints = 500;
-    levelColor = "text-indigo-600 bg-indigo-50 border-indigo-200";
   } else if (points >= 100) {
     level = "Eco Explorer";
     nextLevelPoints = 250;
-    levelColor = "text-teal-600 bg-teal-50 border-teal-200";
   }
 
   // Categories Breakdown data
@@ -81,7 +78,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
 
   // Compare to national average: e.g. 520 kg CO2 / month
   const averageMonthlyCO2 = 520;
-  const carbonStatus = latestRecord 
+  const _carbonStatus = latestRecord 
     ? latestRecord.total < averageMonthlyCO2 
       ? { text: 'Below average', color: 'text-emerald-700 bg-emerald-50 border-emerald-100', icon: Leaf }
       : { text: 'Above average', color: 'text-rose-700 bg-rose-50 border-rose-100', icon: ShieldAlert }
@@ -144,7 +141,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 mb-2">
         <div>
           <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Welcome to EcoLens</h1>
-          <p className="text-slate-500 font-medium">
+          <p className="text-slate-500 font-medium font-sans">
             {reductionPercent && Number(reductionPercent) > 0 
               ? `Your carbon footprint is ${reductionPercent}% lower than index average.` 
               : "Track, simulate, and optimize your monthly environmental output."}
@@ -168,7 +165,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
               <h2 className="text-xl font-bold text-slate-900">Monthly Footprint Share</h2>
               <p className="text-xs text-slate-400">Carbon share of transportation, utilities, food, and lifestyle</p>
             </div>
-            <div className="bg-slate-100 p-2 rounded-xl text-slate-500 text-[10px] font-bold">
+            <div className="bg-slate-100 p-2 rounded-xl text-slate-500 text-[10px] font-bold font-mono">
               v1.0.42
             </div>
           </div>
@@ -261,7 +258,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
                     <button
                       key={p}
                       onClick={() => onSetGoal(p)}
-                      className={`flex-1 py-1 rounded-lg text-[9px] font-bold border transition-all ${
+                      className={`flex-1 py-1 rounded-lg text-[9px] font-bold border transition-all cursor-pointer ${
                         goal.active && goal.targetReductionPercent === p
                           ? 'bg-white text-emerald-900 border-white'
                           : 'bg-emerald-700/50 border-emerald-600/50 text-emerald-100 hover:bg-emerald-700'
@@ -286,7 +283,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
           </p>
           <button 
             onClick={() => onNavigateToTab('habits')}
-            className="mt-6 w-full py-2.5 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors rounded-2xl text-[11px] font-bold"
+            className="mt-6 w-full py-2.5 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors rounded-2xl text-[11px] font-bold cursor-pointer"
           >
             Track Daily Checklist
           </button>
@@ -301,7 +298,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
               </div>
               <div>
                 <h2 className="text-base font-bold text-slate-900">Tailored Carbon Recommendation</h2>
-                <span className="text-[9px] font-extrabold tracking-wide uppercase bg-amber-100 text-amber-800 py-0.5 px-2 rounded-md">
+                <span className="text-[9px] font-extrabold tracking-wide uppercase bg-amber-100 text-amber-800 py-0.5 px-2 rounded-md font-sans">
                   {recommendationCategory}
                 </span>
               </div>
@@ -313,7 +310,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
           
           <button 
             onClick={() => onNavigateToTab('simulator')}
-            className="mt-4 w-full py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-2xl font-bold text-xs transition-colors"
+            className="mt-4 w-full py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-2xl font-bold text-xs transition-colors cursor-pointer"
           >
             Launch What-If Simulator
           </button>
@@ -341,7 +338,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
 
           <button 
             onClick={() => onNavigateToTab('knowledge')}
-            className="w-full py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 rounded-2xl font-bold text-xs transition-colors mt-4"
+            className="w-full py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 rounded-2xl font-bold text-xs transition-colors mt-4 cursor-pointer"
           >
             Test Quiz & Earn Points
           </button>
@@ -401,7 +398,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
             <p className="text-xs text-slate-400">Longitudinal emissions tracking showing seasonal reduction habits</p>
           </div>
           {reductionPercent && Number(reductionPercent) > 0 && (
-            <span className="text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 py-1 px-3 rounded-full uppercase tracking-wider">
+            <span className="text-[10px] font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 py-1 px-3 rounded-full uppercase tracking-wider font-sans">
               -{reductionPercent}% Lower than baseline
             </span>
           )}
@@ -421,10 +418,10 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
               <Tooltip formatter={(value) => [`${value} kg CO₂`, 'Emissions']} />
               <Legend verticalAlign="top" height={36}/>
               <Area type="monotone" dataKey="Total" stroke="#10b981" fillOpacity={1} fill="url(#totalColor)" strokeWidth={2.5} />
-              <Bar type="monotone" dataKey="Transport" stackId="a" fill="#34d399" />
-              <Bar type="monotone" dataKey="Energy" stackId="a" fill="#60a5fa" />
-              <Bar type="monotone" dataKey="Food" stackId="a" fill="#fbbf24" />
-              <Bar type="monotone" dataKey="Lifestyle" stackId="a" fill="#f472b6" />
+              <Bar dataKey="Transport" stackId="a" fill="#34d399" />
+              <Bar dataKey="Energy" stackId="a" fill="#60a5fa" />
+              <Bar dataKey="Food" stackId="a" fill="#fbbf24" />
+              <Bar dataKey="Lifestyle" stackId="a" fill="#f472b6" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
