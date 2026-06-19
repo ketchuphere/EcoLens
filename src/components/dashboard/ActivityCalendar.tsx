@@ -302,7 +302,7 @@ export const ActivityCalendar: React.FC<ActivityCalendarProps> = ({
                   <button
                     key={tab.id}
                     type="button"
-                    onClick={() => setActiveGuideTab(tab.id as any)}
+                    onClick={() => setActiveGuideTab(tab.id as 'commute' | 'utility' | 'diet' | 'goods')}
                     className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-[9.5px] font-extrabold transition-all cursor-pointer ${
                       isActive 
                         ? 'bg-white text-emerald-800 shadow-3xs border border-stone-200/10 font-bold' 

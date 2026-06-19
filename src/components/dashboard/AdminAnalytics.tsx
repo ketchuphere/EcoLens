@@ -101,12 +101,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error('Calculated emissions are non-positive');
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'Calculator Standard Inputs',
         category: 'Calculator Formula',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -145,12 +146,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error('Produced negative parameters.');
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'Edge Cases (Zero/Renewable Inputs)',
         category: 'Boundary Check',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -189,12 +191,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error('Score fell out of bounds.');
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'Extreme High Value Sizing Clamps',
         category: 'Limits Validation',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -239,12 +242,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error('Incomplete rules mapping. Missed expected insights triggers.');
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'Recommendation Rule Matching Engine',
         category: 'Insights Engine',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -252,8 +256,9 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
     try {
       const response = await fetch('/api/health');
       const data = await response.json();
-      if (response.status === 200 && data.status === 'ok') {
-        const leaksSensitive = data.env !== undefined || data.process !== undefined || data.cwd !== undefined;
+      if (response.status === 200 && data.status === 'success') {
+        const payloadToAnalyze = data.data || data;
+        const leaksSensitive = payloadToAnalyze.env !== undefined || payloadToAnalyze.process !== undefined || payloadToAnalyze.cwd !== undefined;
         if (!leaksSensitive) {
           results.push({
             name: 'GET /api/health Check',
@@ -267,12 +272,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error(`Unexpected non-200 or failure state: ${response.status}`);
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'GET /api/health Check',
         category: 'API Security',
         status: 'failed',
-        message: `Failed to fetch API or inspect payload safely: ${e.message}`
+        message: `Failed to fetch API or inspect payload safely: ${err.message}`
       });
     }
 
@@ -290,12 +296,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error(`Expected 405 blocker, but received status ${response.status}`);
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'POST /api/health Method Block',
         category: 'API Security',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -317,12 +324,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error(`Expected 200 payload, but received status ${response.status}`);
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'POST /api/carbon-estimate Calculation',
         category: 'API Calculation',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -344,12 +352,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error(`Expected 400 bad request rejection, but received status ${response.status}`);
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'POST /api/carbon-estimate Input Validation',
         category: 'API Security',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 
@@ -367,12 +376,13 @@ export const AdminAnalytics: React.FC<AdminAnalyticsProps> = ({
       } else {
         throw new Error(`Expected 405 blocker, but received status ${response.status}`);
       }
-    } catch (e: any) {
+    } catch (e) {
+      const err = e as Error;
       results.push({
         name: 'GET /api/carbon-estimate Method Block',
         category: 'API Security',
         status: 'failed',
-        message: `Failed: ${e.message}`
+        message: `Failed: ${err.message}`
       });
     }
 

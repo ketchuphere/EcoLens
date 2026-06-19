@@ -1,5 +1,6 @@
 import { CarbonInputs } from '../types';
 import { calculateCarbonEmissions, generateRecommendations, CalculationResult, Recommendation } from '../utils/calculations';
+import { EcoLensErrorHandler } from '../utils/errorHandler';
 
 /**
  * Service to manage carbon calculations and recommendation retrieval operations.
@@ -12,7 +13,7 @@ export const CarbonService = {
     try {
       return calculateCarbonEmissions(inputs);
     } catch (error) {
-      console.error('[CarbonService] Calculation burst failed, using empty baseline', error);
+      EcoLensErrorHandler.handleError(error, 'Calculation burst failed, using empty baseline');
       return {
         transport: 0,
         energy: 0,
@@ -34,7 +35,7 @@ export const CarbonService = {
     try {
       return generateRecommendations(inputs, totals);
     } catch (error) {
-      console.error('[CarbonService] Failed to compile recommendation insights', error);
+      EcoLensErrorHandler.handleError(error, 'Failed to compile recommendation insights');
       return [];
     }
   }

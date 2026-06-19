@@ -10,9 +10,9 @@ describe('Express API Endpoints', () => {
         .expect('Content-Type', /json/)
         .expect(200);
 
-      expect(response.body.status).toBe('healthy');
-      expect(response.body.service).toBe('EcoLens');
-      expect(response.body).toHaveProperty('uptime');
+      expect(response.body.status).toBe('success');
+      expect(response.body.data.service).toBe('EcoLens');
+      expect(response.body.data).toHaveProperty('uptime');
     });
 
     it('rejects unsupported methods like POST with a 405 status code', async () => {

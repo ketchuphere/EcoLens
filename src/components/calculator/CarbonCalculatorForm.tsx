@@ -172,7 +172,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
                 <label className="block text-xs font-semibold text-stone-700">Primary Commuted Vehicle</label>
                 <select
                   value={inputs.vehicleType}
-                  onChange={(e) => updateInput('vehicleType', e.target.value as any)}
+                  onChange={(e) => updateInput('vehicleType', e.target.value as CarbonInputs['vehicleType'])}
                   className="w-full text-sm font-medium border border-stone-200 rounded-xl px-3 py-2 bg-white focus:outline-emerald-600"
                 >
                   <option value="petrol_car">Petrol Car (~0.21 kg/km)</option>
@@ -375,7 +375,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
                 <label className="block text-xs font-semibold text-stone-700">Standard diet profiles</label>
                 <select
                   value={inputs.dietType}
-                  onChange={(e) => updateInput('dietType', e.target.value as any)}
+                  onChange={(e) => updateInput('dietType', e.target.value as CarbonInputs['dietType'])}
                   className="w-full text-sm font-medium border border-stone-200 rounded-xl px-3 py-2 bg-white focus:outline-emerald-600"
                 >
                   <option value="beef_heavy">Beef Heavy (eating steak/cattle meat high frequency)</option>
@@ -391,7 +391,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
                 <label className="block text-xs font-semibold text-stone-700">Weekly organic food waste volume</label>
                 <select
                   value={inputs.foodWasteLevel}
-                  onChange={(e) => updateInput('foodWasteLevel', e.target.value as any)}
+                  onChange={(e) => updateInput('foodWasteLevel', e.target.value as CarbonInputs['foodWasteLevel'])}
                   className="w-full text-sm font-medium border border-stone-200 rounded-xl px-3 py-2 bg-white focus:outline-emerald-600"
                 >
                   <option value="high">High (throwing out leftovers, expired pantry items regularly)</option>
@@ -415,7 +415,7 @@ export const CarbonCalculatorForm: React.FC<CarbonCalculatorFormProps> = ({
                 <label className="block text-xs font-semibold text-stone-700">Monthly consumer shopping (garments, plastics, gadgets)</label>
                 <select
                   value={inputs.shoppingLevel}
-                  onChange={(e) => updateInput('shoppingLevel', e.target.value as any)}
+                  onChange={(e) => updateInput('shoppingLevel', e.target.value as CarbonInputs['shoppingLevel'])}
                   className="w-full text-sm font-medium border border-stone-200 rounded-xl px-3 py-2 bg-white focus:outline-emerald-600"
                 >
                   <option value="heavy">Heavy (frequent clothing lookups, electronics purchases)</option>

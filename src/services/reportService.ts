@@ -1,5 +1,6 @@
 import { FootprintRecord, FamilyMember } from '../types';
 import { exportToCSV, generateExecutiveReportText } from '../utils/reports';
+import { EcoLensErrorHandler } from '../utils/errorHandler';
 
 /**
  * Report service to coordinate data exportation and audit summary compiles.
@@ -12,7 +13,7 @@ export const ReportService = {
     try {
       return exportToCSV(records);
     } catch (e) {
-      console.error('[ReportService] Error creating export dataset', e);
+      EcoLensErrorHandler.handleError(e, 'Error creating export dataset');
       return '';
     }
   },
@@ -24,7 +25,7 @@ export const ReportService = {
     try {
       return generateExecutiveReportText(records, family);
     } catch (e) {
-      console.error('[ReportService] Error preparing formatted text executive draft', e);
+      EcoLensErrorHandler.handleError(e, 'Error preparing formatted text executive draft');
       return 'Diagnostics compilation failed.';
     }
   }

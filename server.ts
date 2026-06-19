@@ -62,10 +62,12 @@ app.all('/api/health', (req: Request, res: Response, _next: NextFunction) => {
 
   try {
     res.status(200).json({
-      status: 'healthy',
-      service: 'EcoLens',
-      uptime: Math.round(process.uptime()),
-      timestamp: new Date().toISOString()
+      status: 'success',
+      data: {
+        service: 'EcoLens',
+        uptime: Math.round(process.uptime()),
+        timestamp: new Date().toISOString()
+      }
     });
   } catch {
     sendError(res, 500, 'An internal error occurred while processing health diagnostics check.');

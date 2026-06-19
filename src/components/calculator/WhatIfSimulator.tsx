@@ -126,7 +126,7 @@ export const WhatIfSimulator: React.FC<WhatIfSimulatorProps> = ({ currentInputs 
                   <button
                     key={opt.key}
                     type="button"
-                    onClick={() => setDietAdjustment(opt.key as any)}
+                    onClick={() => setDietAdjustment(opt.key as 'no_change' | 'half_veg' | 'all_vegan')}
                     className={`py-2 px-3 rounded-xl border text-[11px] font-bold transition-all cursor-pointer focus:outline-emerald-600 ${
                       dietAdjustment === opt.key
                         ? 'bg-emerald-600 border-emerald-600 text-white shadow shadow-emerald-500/10'

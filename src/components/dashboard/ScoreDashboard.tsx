@@ -28,9 +28,9 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
   const latestRecord = records[0];
 
   // Calculate current score via centralized CarbonService
-  const sustainabilityScore = latestRecord
+  const sustainabilityScore = React.useMemo(() => latestRecord
     ? CarbonService.calculate(latestRecord.inputs).sustainabilityScore
-    : 70; // fallback standard score
+    : 70, [latestRecord]); // fallback standard score
 
   // Determine levels
   let level = "Green Beginner";
@@ -45,7 +45,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
   }
 
   // Categories Breakdown data
-  const pieData = latestRecord
+  const pieData = React.useMemo(() => latestRecord
     ? [
         { name: 'Transport', value: latestRecord.transport, color: '#10b981' },
         { name: 'Energy', value: latestRecord.energy, color: '#3b82f6' },
@@ -57,11 +57,11 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
         { name: 'Energy', value: 140, color: '#3b82f6' },
         { name: 'Food', value: 120, color: '#f59e0b' },
         { name: 'Lifestyle', value: 60, color: '#ec4899' },
-      ];
+      ], [latestRecord]);
 
   // Monthly trends data (reversing order to show chronologically left-to-right)
-  const sortedRecords = [...records].reverse();
-  const trendData = sortedRecords.length > 0
+  const sortedRecords = React.useMemo(() => [...records].reverse(), [records]);
+  const trendData = React.useMemo(() => sortedRecords.length > 0
     ? sortedRecords.map(r => ({
         name: r.date,
         Total: r.total,
@@ -74,7 +74,7 @@ export const ScoreDashboard: React.FC<ScoreDashboardProps> = ({
         { name: 'April', Total: 560, Transport: 210, Energy: 180, Food: 120, Lifestyle: 50 },
         { name: 'May', Total: 510, Transport: 190, Energy: 160, Food: 110, Lifestyle: 50 },
         { name: 'June', Total: 420, Transport: 150, Energy: 130, Food: 95, Lifestyle: 45 },
-      ];
+      ], [sortedRecords]);
 
   // Compare to national average: e.g. 520 kg CO2 / month
   const averageMonthlyCO2 = 520;

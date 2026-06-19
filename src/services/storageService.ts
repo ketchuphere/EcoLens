@@ -1,4 +1,5 @@
 import { FootprintRecord, UserGoal, FamilyMember, DailyHabits } from '../types';
+import { EcoLensErrorHandler } from '../utils/errorHandler';
 
 /**
  * Storage service keys for consistency.
@@ -24,7 +25,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.RECORDS);
       return data ? JSON.parse(data) : [];
     } catch (e) {
-      console.error('[StorageService] Error parsing records', e);
+      EcoLensErrorHandler.handleError(e, 'Error parsing records');
       return [];
     }
   },
@@ -37,7 +38,7 @@ export const StorageService = {
         localStorage.removeItem(KEYS.RECORDS);
       }
     } catch (e) {
-      console.error('[StorageService] Error saving records', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving records');
     }
   },
 
@@ -47,7 +48,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.GOALS);
       return data ? JSON.parse(data) : defaultGoal;
     } catch (e) {
-      console.error('[StorageService] Error parsing goals', e);
+      EcoLensErrorHandler.handleError(e, 'Error parsing goals');
       return defaultGoal;
     }
   },
@@ -56,7 +57,7 @@ export const StorageService = {
     try {
       localStorage.setItem(KEYS.GOALS, JSON.stringify(goal));
     } catch (e) {
-      console.error('[StorageService] Error saving goal', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving goal');
     }
   },
 
@@ -68,7 +69,7 @@ export const StorageService = {
       const parsed = parseInt(data, 10);
       return isNaN(parsed) ? fallback : parsed;
     } catch (e) {
-      console.error('[StorageService] Error reading streak', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading streak');
       return fallback;
     }
   },
@@ -85,7 +86,7 @@ export const StorageService = {
       const parsed = parseInt(data, 10);
       return isNaN(parsed) ? fallback : parsed;
     } catch (e) {
-      console.error('[StorageService] Error reading points', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading points');
       return fallback;
     }
   },
@@ -100,7 +101,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.BADGES);
       return data ? JSON.parse(data) : fallback;
     } catch (e) {
-      console.error('[StorageService] Error reading badges', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading badges');
       return fallback;
     }
   },
@@ -109,7 +110,7 @@ export const StorageService = {
     try {
       localStorage.setItem(KEYS.BADGES, JSON.stringify(badges));
     } catch (e) {
-      console.error('[StorageService] Error saving badges', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving badges');
     }
   },
 
@@ -119,7 +120,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.CHALLENGES);
       return data ? JSON.parse(data) : fallback;
     } catch (e) {
-      console.error('[StorageService] Error reading challenges', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading challenges');
       return fallback;
     }
   },
@@ -128,7 +129,7 @@ export const StorageService = {
     try {
       localStorage.setItem(KEYS.CHALLENGES, JSON.stringify(challenges));
     } catch (e) {
-      console.error('[StorageService] Error saving challenges', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving challenges');
     }
   },
 
@@ -138,7 +139,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.FAMILY);
       return data ? JSON.parse(data) : [];
     } catch (e) {
-      console.error('[StorageService] Error reading family members', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading family members');
       return [];
     }
   },
@@ -147,7 +148,7 @@ export const StorageService = {
     try {
       localStorage.setItem(KEYS.FAMILY, JSON.stringify(family));
     } catch (e) {
-      console.error('[StorageService] Error saving family members', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving family members');
     }
   },
 
@@ -157,7 +158,7 @@ export const StorageService = {
       const data = localStorage.getItem(KEYS.HABITS);
       return data ? JSON.parse(data) : fallback;
     } catch (e) {
-      console.error('[StorageService] Error reading daily checklist habits', e);
+      EcoLensErrorHandler.handleError(e, 'Error reading daily checklist habits');
       return fallback;
     }
   },
@@ -166,7 +167,7 @@ export const StorageService = {
     try {
       localStorage.setItem(KEYS.HABITS, JSON.stringify(habits));
     } catch (e) {
-      console.error('[StorageService] Error saving habits', e);
+      EcoLensErrorHandler.handleError(e, 'Error saving habits');
     }
   },
 
@@ -175,7 +176,7 @@ export const StorageService = {
     try {
       localStorage.clear();
     } catch (e) {
-      console.error('[StorageService] Failure clearing LocalStorage cache', e);
+      EcoLensErrorHandler.handleError(e, 'Failure clearing LocalStorage cache');
     }
   }
 };
