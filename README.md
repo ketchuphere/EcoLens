@@ -25,15 +25,19 @@ Our design provides a seamless transition from onboarding inputs to visible envi
 
 ```
     [ Input ]
-        ↓ (Transportation, utilities, diet, and lifestyle)
+        ↓
+(Transportation, utilities, diet, and lifestyle)
  [ Calculation ]
-        ↓ (Pure deterministic conversion multipliers)
+        ↓
+(Pure deterministic conversion multipliers)
    [ Insights ]
-        ↓ (Custom interactive dashboards and bento-grid charts)
+        ↓
+(Custom interactive dashboards and bento-grid charts)
     [ Actions ]
-        ↓ (Actionable, custom recommendations & What-If simulator)
+        ↓
+(Actionable, custom recommendations & What-If simulator)
 [ Progress Tracking ]
-          (Dynamic daily checklist habits & score calendar)
+(Dynamic daily checklist habits & score calendar)
 ```
 
 ### Feature Mapping
