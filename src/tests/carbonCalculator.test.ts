@@ -159,8 +159,8 @@ describe('Carbon Calculator & Validators & Service', () => {
       expect(() => validateCarbonInputs({ distanceCar: NaN })).toThrow();
       expect(() => validateCarbonInputs({ vehicleType: 'invalid' as unknown as 'petrol_car' })).toThrow();
       expect(() => validateCarbonInputs({ dietType: 'invalid' as unknown as 'vegan' })).toThrow();
-      expect(() => validateCarbonInputs({ foodWasteLevel: 'invalid' as unknown as 'none' })).toThrow();
-      expect(() => validateCarbonInputs({ shoppingLevel: 'invalid' as unknown as 'average' })).toThrow();
+      expect(() => validateCarbonInputs({ foodWasteLevel: 'invalid' as unknown as 'high' })).toThrow();
+      expect(() => validateCarbonInputs({ shoppingLevel: 'invalid' as unknown as 'heavy' })).toThrow();
     });
   });
 });

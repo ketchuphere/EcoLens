@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import { CarbonService } from '../services/carbonService';
+import { CarbonInputs } from '../types';
 
 describe('Performance Specifications TestSuite', () => {
 
   it('measures rendering duration of complex components is well within safe interactive limits (<15ms)', () => {
-    const inputs = {
+    const inputs: CarbonInputs = {
       vehicleType: 'petrol_car',
       distanceCar: 400,
       distanceBus: 100,

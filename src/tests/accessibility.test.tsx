@@ -30,10 +30,10 @@ const dummyInputs: CarbonInputs = {
 };
 
 const dummyGoal: UserGoal = {
-  id: 'goal-1',
+  active: true,
+  targetReductionPercent: 20,
   baselineEmissions: 480,
-  targetEmissions: 380,
-  targetMonth: '2026-06'
+  targetEmissions: 380
 };
 
 describe('Accessibility Specifications Test', () => {
@@ -81,7 +81,7 @@ describe('Accessibility Specifications Test', () => {
 
   describe('2. Carbon Calculator Accessibility', () => {
     it('labels all numeric inputs correctly to ensure screen readers map fields correctly', () => {
-      render(<CarbonCalculatorForm currentInputs={dummyInputs} onCalculate={() => {}} />);
+      render(<CarbonCalculatorForm initialInputs={dummyInputs} onSave={() => {}} />);
 
       const rangeInputs = document.querySelectorAll('input[type="range"]');
       expect(rangeInputs.length).toBeGreaterThan(0);
@@ -97,7 +97,7 @@ describe('Accessibility Specifications Test', () => {
     });
 
     it('implements tab-index sequences naturally for keyboard navigation', () => {
-      render(<CarbonCalculatorForm currentInputs={dummyInputs} onCalculate={() => {}} />);
+      render(<CarbonCalculatorForm initialInputs={dummyInputs} onSave={() => {}} />);
 
       const inputs = document.querySelectorAll('input');
       inputs.forEach((el) => {
